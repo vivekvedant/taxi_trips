@@ -1,0 +1,10 @@
+From python:3.7-alpine3.14
+
+WORKDIR /taxi_trips
+COPY . /taxi_trips
+
+RUN python setup.py install
+RUN pip install -r requirements.txt
+COPY /tests/  /taxi_trips/src/flask_app/tests/
+WORKDIR /taxi_trips/src/flask_app
+
