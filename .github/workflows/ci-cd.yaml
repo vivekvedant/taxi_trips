@@ -20,20 +20,29 @@ jobs:
         # - name: Checkout the repo
         #   uses: actions/checkout@main
 
-        - name: run docker compose
-          uses: sudo-bot/action-docker-compose@latest
-          with:
-            cli-args: "up -d"
+        # - name: run docker compose
+        #   uses: sudo-bot/action-docker-compose@latest
+        #   with:
+        #     cli-args: "up -d"
 
-        - name: check running docker container
-          uses: sudo-bot/action-docker-compose@latest
-          with:
-            cli-args: "ps -a"
+        # - name: check running docker container
+        #   uses: sudo-bot/action-docker-compose@latest
+        #   with:
+        #     cli-args: "ps -a"
+
+        # - name: check docker compose logs
+        #   uses: sudo-bot/action-docker-compose@latest
+        #   with:
+        #     cli-args: "logs"
+
+        - name: run docker compose
+          run: docker-compose up --build -d
+
+        - name: check running containers
+          run: docker-compose ps -a
 
         - name: check docker compose logs
-          uses: sudo-bot/action-docker-compose@latest
-          with:
-            cli-args: "logs"
+          run: docker-compose logs
 
         - name: run pytest on flask container
-          run: docker-compose exec -T flask_app pytest "tests"
+          run: docker-compose exec workspace_flask_app pytest "tests"
