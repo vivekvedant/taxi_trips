@@ -7,6 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.flask
+    image: vivekvedant/taki_trips:flask_app
     ports:
       - "5000"
     command: gunicorn  wsgi:server --bind 0.0.0.0:5000
@@ -19,6 +20,7 @@ services:
     build:
       context: .
       dockerfile:  Dockerfile.ngnix
+    image: vivekvedant/taki_trips:ngnix
     ports:
       - "80:80"
     depends_on:
