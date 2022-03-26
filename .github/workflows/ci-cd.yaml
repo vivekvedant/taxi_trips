@@ -26,3 +26,6 @@ jobs:
             cli-args: "up -d"
         - name: check running docker container
           run: docker ps
+
+        - name: run pytest on flask container
+          run: docker-compose exec workspace_flask_app pytest "tests"
