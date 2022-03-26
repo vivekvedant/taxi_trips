@@ -36,7 +36,4 @@ jobs:
             cli-args: "logs"
 
         - name: run pytest on flask container
-          uses: sudo-bot/action-docker-compose@latest
-          with:
-            cli-args: "exec -T flask_app pytest 'tests'"
-
+          run: docker-compose exec -T flask_app pytest "tests"
