@@ -36,4 +36,4 @@ jobs:
             cli-args: "logs"
 
         - name: run pytest on flask container
-          run: docker-compose exec workspace_flask_app pytest "tests"
+          run: docker-compose exec flask_app pytest "tests"
