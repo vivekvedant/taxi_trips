@@ -23,6 +23,6 @@ jobs:
         - name: run docker compose
           uses: sudo-bot/action-docker-compose@latest
           with:
-            cli-args: "up"
+            cli-args: "up -d"
         - name: check running docker container
           run: docker ps
