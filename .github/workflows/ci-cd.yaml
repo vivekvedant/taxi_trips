@@ -5,9 +5,9 @@ on:
     branches: [ main ]
 
 jobs:
-    push_to_registry:
-       runs-on: ubuntu-latest
-       steps:
+  push_to_registry:
+    runs-on: ubuntu-latest
+    steps:
         - name: Checkout the repo
         - uses: actions/checkout@main
 
