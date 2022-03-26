@@ -26,14 +26,14 @@ jobs:
             cli-args: "up -d"
 
         - name: check running docker container
-          run: sudo-bot/action-docker-compose@latest
+          uses: sudo-bot/action-docker-compose@latest
           with:
             cli-args: "ps -a"
 
         - name: check docker compose logs
-          run: sudo-bot/action-docker-compose@latest
+          uses: sudo-bot/action-docker-compose@latest
           with:
             cli-args: "docker-compose logs"
-            
+
         - name: run pytest on flask container
           run: docker-compose exec workspace_flask_app pytest "tests"
