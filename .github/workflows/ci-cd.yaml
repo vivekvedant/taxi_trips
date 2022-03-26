@@ -33,7 +33,7 @@ jobs:
         - name: check docker compose logs
           uses: sudo-bot/action-docker-compose@latest
           with:
-            cli-args: "docker-compose logs"
+            cli-args: "logs"
 
         - name: run pytest on flask container
           run: docker-compose exec workspace_flask_app pytest "tests"
