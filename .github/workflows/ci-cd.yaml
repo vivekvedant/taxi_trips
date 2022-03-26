@@ -29,9 +29,7 @@ jobs:
         - name: run pytest on flask container
           run: docker-compose exec -T flask_app pytest "tests"
 
-        - name: run pytest on flask container
-          run: docker-compose exec -T flask_app pytest "tests"
-
         - name: publish docker compose
           run: docker-compose push
 
+  

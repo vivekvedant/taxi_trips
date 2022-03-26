@@ -1,0 +1,21 @@
+#main_heading {
+    text-align: center;
+    padding-top: 3%;
+}
+#submit_btn{
+    margin-top: 15px;
+    border: none;
+    width: 91px;
+    height: 35px;
+    background: black;
+    color: white;
+}
+
+label {
+    display: inline-block;
+    padding-bottom: 1px;
+    padding-top: 23px;
+    text-transform: capitalize;
+    padding-left: 2px;
+    font-weight: 600;
+}

@@ -4,9 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
 </head>
 <body>
-    <p> Welcome to homepage</p>
+    <div class = "container" id = "main_heading">
+        <h2> Predict Taxi Fare amount</h2>
+    </div>
+    <div class="container">
+        <form type = "post", action = "#">
+            <div class="form-group">
+                <label>pick up location</label><br>
+                <select class="form-control"  name = "pickup_location">
+                    {% for location_id, zone_name in zone_list.iterrows() %}
+                    <option  name = "{{ zone_name.LocationID }}" > {{ zone_name.Zone }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>drop location</label><br>
+                <select class="form-control"  name = "dropoff_location">
+                    {% for location_id, zone_name in zone_list.iterrows() %}
+                    <option  name = "{{ zone_name.LocationID }}" > {{ zone_name.Zone }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>passenger count</label><br>
+                <input type = "text"  class="form-control" name = "passenger_count">
+            </div>
+            <div class=" form-group ">
+                <div class="row">
+                  <div class="col-md">
+                    <label> Pick up time</label><br>
+                    <input type = "time" class="form-control currentTime" name = "pickup_time">
+                  </div>
+                  <div class="col-md">
+                    <label> Pick up date</label><br>
+                    <input type = "date" class="form-control currentDate" name = "pickup_date">
+
+                  </div>
+                </div>
+            </div>
+            <div class=" form-group ">
+                <div class="row">
+                  <div class="col-md">
+                    <label> Dropoff  time</label><br>
+                    <input type = "time" class="form-control currentTime" name = "dropoff_time">
+                  </div>
+                  <div class="col-md">
+                    <label> Dropoff  date</label><br>
+                    <input type = "date" class="form-control currentDate" name = "dropoff_date">
+
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">   <button type = "submit" id = "submit_btn"> Predict</button></div>
+
+        </form>
+    </div>
+
+    <script>
+    var date = new Date();
+    var currentDate = date.toISOString().substring(0,10);
+    var currentTime = date.toISOString().substring(11,16);
+    date_class = document.getElementsByClassName('currentDate')
+    time_class = document.getElementsByClassName('currentTime')
+    for(var i = 0; i < date_class.length; i++) {
+        date_class[i].value = currentDate;
+        time_class[i].value = currentTime;
+    }
+
+    </script>
 </body>
+
 </html>
