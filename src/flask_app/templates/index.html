@@ -21,16 +21,16 @@
             <div class="form-group">
                 <label>pick up location</label><br>
                 <select class="form-control"  name = "pickup_location">
-                    {% for location_id, zone_name in zone_list.iterrows() %}
-                    <option  name = "{{ zone_name.LocationID }}" > {{ zone_name.Zone }} </option>
+                    {% for  zone_name, location_id  in zone_list.items() %}
+                    <option  name = "{{ location_id }}" > {{ zone_name }} </option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group">
                 <label>drop location</label><br>
-                <select class="form-control"  name = "dropoff_location">
-                    {% for location_id, zone_name in zone_list.iterrows() %}
-                    <option  name = "{{ zone_name.LocationID }}" > {{ zone_name.Zone }} </option>
+                <select class="form-control"  name = "pickup_location">
+                    {% for  zone_name, location_id  in zone_list.items() %}
+                    <option  name = "{{ location_id }}" > {{ zone_name }} </option>
                     {% endfor %}
                 </select>
             </div>
