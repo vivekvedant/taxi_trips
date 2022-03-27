@@ -17,7 +17,7 @@
         <h2> Predict Taxi Fare amount</h2>
     </div>
     <div class="container">
-        <form type = "post", action = "#">
+        <form action="{{ url_for('predict') }}" method="post">
             <div class="form-group">
                 <label>pick up location</label><br>
                 <select class="form-control"  name = "pickup_location">
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label>drop location</label><br>
-                <select class="form-control"  name = "pickup_location">
+                <select class="form-control"  name = "dropoff_location">
                     {% for  zone_name, location_id  in zone_list.items() %}
                     <option  name = "{{ location_id }}" > {{ zone_name }} </option>
                     {% endfor %}

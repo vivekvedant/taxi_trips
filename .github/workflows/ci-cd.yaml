@@ -10,7 +10,8 @@ jobs:
     steps:
         - name: Checkout the repo
           uses: actions/checkout@main
-
+        - name: run tox
+          run: tox
         - name: Login to Docker Hub
           uses: docker/login-action@v1
           with:
@@ -32,4 +33,3 @@ jobs:
         - name: publish docker compose
           run: docker-compose push
 
-  

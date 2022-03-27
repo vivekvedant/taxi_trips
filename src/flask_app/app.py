@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 import os
 import pickle
 # import pandas as pd
@@ -15,11 +15,23 @@ server = Flask(__name__,static_folder = static_dir,template_folder = template_di
 @server.route("/",methods = ['GET'])
 def index():
     # get the location zone name
-    # read_zone_pickle_file = pickle.load(open("../pickle_files/zone.pickle","rb"))
-    with open("../../conf/location_id.json", "r") as outfile:
+    with open("conf/location_id.json", "r") as outfile:
         zone_info =  json.load(outfile)
-    #  = json.loads(open(,"rb"))
     return render_template("index.html",zone_list=zone_info)
+
+
+
+@server.route('/predict',methods = ['POST'])
+def predict():
+     pickup_location = request.form['pickup_location']
+     dropoff_location  = request.form['dropoff_location']
+     passenger_count = request.form['passenger_count']
+     pickup_time = request.form['pickup_time']
+     pickup_date = request.form['pickup_date']
+     dropoff_time = request.form['dropoff_time']
+     dropoff_date = request.form['dropoff_date']
+
+
 
 
 
