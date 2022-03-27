@@ -15,7 +15,9 @@ server = Flask(__name__,static_folder = static_dir,template_folder = template_di
 @server.route("/",methods = ['GET'])
 def index():
     # get the location zone name
-    with open(os.path.abspath("conf/location_id.json"), "r") as outfile:
+    # json_file_loc = os.path.join("conf","location_id.json")
+
+    with open("conf/location_id.json", "r") as outfile:
         zone_info =  json.load(outfile)
     return render_template("index.html",zone_list=zone_info)
 
@@ -30,8 +32,6 @@ def predict():
      pickup_date = request.form['pickup_date']
      dropoff_time = request.form['dropoff_time']
      dropoff_date = request.form['dropoff_date']
-
-     return False
 
 
 

@@ -5,6 +5,7 @@ COPY . /taxi_trips
 
 RUN python setup.py install
 RUN pip install -r requirements.txt
-COPY /tests/  /taxi_trips/src/flask_app/tests/
+RUN mv /taxi_trips/tests/  /taxi_trips/src/flask_app/tests/
+RUN mv /taxi_trips/conf/  /taxi_trips/src/flask_app/conf/
 WORKDIR /taxi_trips/src/flask_app
 
