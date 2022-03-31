@@ -3,6 +3,8 @@ import os
 import pickle
 # import pandas as pd
 import json
+from prometheus_flask_exporter import PrometheusMetrics
+import logging
 
 template_dir =  os.path.join(os.path.dirname(os.path.abspath(__file__)),"templates")
 
@@ -11,6 +13,14 @@ static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),"static")
 
 server = Flask(__name__,static_folder = static_dir,template_folder = template_dir)
 
+metrics  = PrometheusMetrics(server)
+
+
+logging.basicConfig(level=logging.INFO)
+logging.info("Setting LOGLEVEL to INFO")
+
+
+metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
 
 @server.route("/",methods = ['GET'])
 def index():

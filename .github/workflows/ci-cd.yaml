@@ -43,6 +43,9 @@ jobs:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
 
+        - name: install loki plugin
+          run: docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+  
         - name: run docker compose
           run: docker-compose up --build -d
 

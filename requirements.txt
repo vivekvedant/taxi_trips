@@ -12,3 +12,4 @@ flask
 gunicorn
 pytest==7.1.1
 tox==3.24.5
+prometheus_flask_exporter
