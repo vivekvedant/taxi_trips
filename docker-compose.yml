@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: Docker_Files/Dockerfile.flask
-    # image: vivekvedant/taki_trips:flask_app
+    image: vivekvedant/taki_trips:flask_app
     ports:
       - "5000"
     depends_on:
@@ -35,7 +35,7 @@ services:
     build:
       context: .
       dockerfile:  Docker_Files/Dockerfile.ngnix
-    # image: vivekvedant/taki_trips:ngnix
+    image: vivekvedant/taki_trips:ngnix
     ports:
       - "80:80"
     depends_on:
@@ -89,6 +89,7 @@ services:
     container_name: nginx_exporter
     command:
       - '-nginx.scrape-uri=http://ngnix/stub_status'
+
     restart: always
     # image: vivekvedant/taki_trips:ngnix
     ports:
@@ -136,7 +137,7 @@ services:
       - ./monitoring/alertmanager:/etc/alertmanager
     command:
       - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/monitoring/alertmanager'
+      - '--storage.path=alertmanager'
     restart: unless-stopped
     expose:
       - 9093

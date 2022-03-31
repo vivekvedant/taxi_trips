@@ -11,6 +11,7 @@ global:
 rule_files:
   - "alert.rules"
 
+
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
   - job_name: 'nodeexporter'
@@ -44,19 +45,9 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['flask_app:5000']
-alerting:
-  alertmanagers:
-  - scheme: http
-    static_configs:
-    - targets:
-      - 'alertmanager:9093'
+# alerting:
+#   alertmanagers:
+#   - scheme: http
+#     static_configs:
+#     - targets: ['alertmanager:9093']
 
-#  - job_name: 'nginx'
-#    scrape_interval: 10s
-#    static_configs:
-#      - targets: ['nginxexporter:9113']
-
-#  - job_name: 'aspnetcore'
-#    scrape_interval: 10s
-#    static_configs:
-#      - targets: ['eventlog-proxy:5000', 'eventlog:5000']
