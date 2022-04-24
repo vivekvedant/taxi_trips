@@ -3,31 +3,117 @@ version: '3.3'
 networks:
   monitor-net:
     driver: bridge
+  spark_network:
+    driver: bridge
+
 
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    # trained_models:
+    #   external: true
 
 
 
 services:
+  spark:
+    image: docker.io/bitnami/spark:3-debian-10
+    container_name: spark
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_PUBLIC_DNS=localhost
+    expose:
+      - 7001
+      - 7002
+      - 7003
+      - 7004
+      - 7005
+      - 7006
+      - 7077
+      - 6066
+    ports:
+      - 4040:4040
+      - 6066:6066
+      - 7077:7077
+      - 8080:8080
+    networks:
+      - spark_network
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 1024M
+    #     reservations:
+    #       memory: 1000M
+
+  spark-worker:
+    image: docker.io/bitnami/spark:3-debian-10
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=6G
+      - SPARK_WORKER_CORES=12
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_PUBLIC_DNS=localhost
+    expose:
+      - 7012
+      - 7013
+      - 7014
+      - 7015
+      - 7016
+      - 8881
+    ports:
+      - 8081:8081
+    networks:
+      - spark_network
+    volumes:
+      -  "./trained_models/:/taxi_trips/src/flask_app/trained_models/:rw"
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 1024M
+    #     reservations:
+    #       memory: 1000M
+
   flask_app:
     container_name: flask_app
     restart: always
     build:
       context: .
       dockerfile: Docker_Files/Dockerfile.flask
-    image: vivekvedant/taki_trips:flask_app
+    # image: vivekvedant/taki_trips:flask_app
     ports:
       - "5000"
+    links:
+      - spark
+      - spark-worker
     depends_on:
+      - spark
+      - spark-worker
       - loki
     logging:
       driver: loki
       options:
         loki-url: http://localhost:3100/loki/api/v1/push
         loki-external-labels: job=dockerlogs,owner=ruan,environment=development
-    command: gunicorn  wsgi:server --bind 0.0.0.0:5000
+    command: gunicorn  wsgi:server --bind 0.0.0.0:5000 --timeout 10000 --chdir /taxi_trips/src/flask_app/
+    networks:
+      - spark_network
+    # volumes:
+    #   - taxi_trips_data:/taxi_trips/src/flask_app/trained_models/randomForest/
+    deploy:
+      resources:
+        limits:
+          memory: 800m
+        reservations:
+          memory: 700m
 
   ngnix:
     container_name: ngnix
@@ -35,7 +121,7 @@ services:
     build:
       context: .
       dockerfile:  Docker_Files/Dockerfile.ngnix
-    image: vivekvedant/taki_trips:ngnix
+    # image: vivekvedant/taki_trips:ngnix
     ports:
       - "80:80"
     depends_on:
@@ -46,203 +132,226 @@ services:
       options:
         loki-url: http://localhost:3100/loki/api/v1/push
         loki-external-labels: job=dockerlogs,owner=ruan,environment=development
-
-  loki:
-    image: grafana/loki:v1.3.0
-    container_name: loki
-
-    volumes:
-       - ./monitoring/loki/loki.yaml:/etc/config/loki.yaml
-    entrypoint:
-      - /usr/bin/loki
-      - -config.file=/etc/config/loki.yaml
-    ports:
-     - 3100:3100
+    deploy:
+      resources:
+        limits:
+          memory: 50m
+        reservations:
+          memory: 25m
     networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+      - spark_network
+  # loki:
+  #   image: grafana/loki:v1.3.0
+  #   container_name: loki
+
+  #   volumes:
+  #      - ./monitoring/loki/loki.yaml:/etc/config/loki.yaml
+  #   entrypoint:
+  #     - /usr/bin/loki
+  #     - -config.file=/etc/config/loki.yaml
+  #   ports:
+  #    - 3100:3100
+  #   networks:
+  #     - monitor-net
+  #     - spark_network
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 50m
+  #       reservations:
+  #         memory: 25m
 
 
-  promtail:
-    image: grafana/promtail:latest
-    container_name: promtail
-    volumes:
-      - /var/log:/var/log
-      - /var/lib/docker/containers:/var/lib/docker/containers
-      - ./monitoring/promtail:/etc/promtail-config/
-    command: -config.file=/etc/promtail-config/promtail.yml
-    logging:
-      driver: loki
-      options:
-        loki-url: http://localhost:3100/loki/api/v1/push
-        loki-external-labels: job=dockerlogs,owner=ruan,environment=development
-    networks:
-      - monitor-net
-    depends_on:
-      - loki
-    labels:
-      org.label-schema.group: "monitoring"
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   container_name: promtail
+  #   volumes:
+  #     - /var/log:/var/log
+  #     - /var/lib/docker/containers:/var/lib/docker/containers
+  #     - ./monitoring/promtail:/etc/promtail-config/
+  #   command: -config.file=/etc/promtail-config/promtail.yml
+  #   logging:
+  #     driver: loki
+  #     options:
+  #       loki-url: http://localhost:3100/loki/api/v1/push
+  #       loki-external-labels: job=dockerlogs,owner=ruan,environment=development
+  #   networks:
+  #     - monitor-net
+  #   depends_on:
+  #     - loki
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  nginx_exporter:
-    image: nginx/nginx-prometheus-exporter:0.10.0
-    container_name: nginx_exporter
-    command:
-      - '-nginx.scrape-uri=http://ngnix/stub_status'
+  # nginx_exporter:
+  #   image: nginx/nginx-prometheus-exporter:0.10.0
+  #   container_name: nginx_exporter
+  #   command:
+  #     - '-nginx.scrape-uri=http://ngnix/stub_status'
 
-    restart: always
-    # image: vivekvedant/taki_trips:ngnix
-    ports:
-      - 9113:9113
-    logging:
-      driver: loki
-      options:
-        loki-url: http://localhost:3100/loki/api/v1/push
-        loki-external-labels: job=dockerlogs,owner=ruan,environment=development
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-    depends_on:
-      - ngnix
-      - loki
+  #   restart: always
+  #   # image: vivekvedant/taki_trips:ngnix
+  #   ports:
+  #     - 9113:9113
+  #   logging:
+  #     driver: loki
+  #     options:
+  #       loki-url: http://localhost:3100/loki/api/v1/push
+  #       loki-external-labels: job=dockerlogs,owner=ruan,environment=development
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   depends_on:
+  #     - ngnix
+  #     - loki
 
-  prometheus:
-    image: prom/prometheus:v2.32.1
-    container_name: prometheus
-    volumes:
-      - ./monitoring/prometheus:/etc/prometheus
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention.time=200h'
-      - '--web.enable-lifecycle'
-    restart: unless-stopped
-    depends_on:
-      - loki
-    expose:
-      - 9090
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # prometheus:
+  #   image: prom/prometheus:v2.32.1
+  #   container_name: prometheus
+  #   volumes:
+  #     - ./monitoring/prometheus:/etc/prometheus
+  #     - prometheus_data:/prometheus
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--web.console.libraries=/etc/prometheus/console_libraries'
+  #     - '--web.console.templates=/etc/prometheus/consoles'
+  #     - '--storage.tsdb.retention.time=200h'
+  #     - '--web.enable-lifecycle'
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - loki
+  #   expose:
+  #     - 9090
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  alertmanager:
-    image: prom/alertmanager:v0.23.0
-    container_name: alertmanager
-    volumes:
-      - ./monitoring/alertmanager:/etc/alertmanager
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=alertmanager'
-    restart: unless-stopped
-    expose:
-      - 9093
-    depends_on:
-      - grafana
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # alertmanager:
+  #   image: prom/alertmanager:v0.23.0
+  #   container_name: alertmanager
+  #   volumes:
+  #     - ./monitoring/alertmanager:/etc/alertmanager
+  #   command:
+  #     - '--config.file=/etc/alertmanager/config.yml'
+  #     - '--storage.path=alertmanager'
+  #   restart: unless-stopped
+  #   expose:
+  #     - 9093
+  #   depends_on:
+  #     - grafana
+  #     - ngnix
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  nodeexporter:
-    image: prom/node-exporter:v1.3.1
-    container_name: nodeexporter
-    user: root
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
+  # nodeexporter:
+  #   image: prom/node-exporter:v1.3.1
+  #   container_name: nodeexporter
+  #   user: root
+  #   volumes:
+  #     - /proc:/host/proc:ro
+  #     - /sys:/host/sys:ro
+  #     - /:/rootfs:ro
 
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.rootfs=/rootfs'
-      - '--path.sysfs=/host/sys'
-      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-    restart: unless-stopped
-    expose:
-      - 9100
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  #   command:
+  #     - '--path.procfs=/host/proc'
+  #     - '--path.rootfs=/rootfs'
+  #     - '--path.sysfs=/host/sys'
+  #     - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - ngnix
+  #   expose:
+  #     - 9100
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.43.0
-    container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg:/dev/kmsg
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
-    restart: unless-stopped
-    ports:
-      - 8080
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # cadvisor:
+  #   image: gcr.io/cadvisor/cadvisor:v0.43.0
+  #   container_name: cadvisor
+  #   privileged: true
+  #   devices:
+  #     - /dev/kmsg:/dev/kmsg
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:ro
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker:/var/lib/docker:ro
+  #     #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - ngnix
+  #   ports:
+  #     - 8080
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  grafana:
-    image: grafana/grafana:8.3.3
-    container_name: grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-    environment:
-      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
-      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-      - GF_USERS_ALLOW_SIGN_UP=false
-    restart: unless-stopped
-    expose:
-      - 3000
-    networks:
-      - monitor-net
-    depends_on:
-      - prometheus
-      - caddy
-      - pushgateway
-      - cadvisor
-      - nodeexporter
-    labels:
-      org.label-schema.group: "monitoring"
+  # grafana:
+  #   image: grafana/grafana:8.3.3
+  #   container_name: grafana
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #     - ./monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+  #     - ./monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+  #   environment:
+  #     - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+  #     - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+  #     - GF_USERS_ALLOW_SIGN_UP=false
+  #   restart: unless-stopped
+  #   expose:
+  #     - 3000
+  #   networks:
+  #     - monitor-net
+  #   depends_on:
+  #     - prometheus
+  #     - caddy
+  #     - pushgateway
+  #     - cadvisor
+  #     - nodeexporter
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  pushgateway:
-    image: prom/pushgateway:v1.4.2
-    container_name: pushgateway
-    restart: unless-stopped
-    expose:
-      - 9091
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # pushgateway:
+  #   image: prom/pushgateway:v1.4.2
+  #   container_name: pushgateway
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - ngnix
+  #   expose:
+  #     - 9091
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
-  caddy:
-    image: caddy:2.3.0
-    container_name: caddy
-    ports:
-      - "3000:3000"
-      - "9090:9090"
-      - "9093:9093"
-      - "9091:9091"
-    volumes:
-      - ./monitoring/caddy:/etc/caddy
-    environment:
-      - ADMIN_USER=${ADMIN_USER:-admin}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-      - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH:-JDJhJDE0JE91S1FrN0Z0VEsyWmhrQVpON1VzdHVLSDkyWHdsN0xNbEZYdnNIZm1pb2d1blg4Y09mL0ZP}
-    restart: unless-stopped
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
+  # caddy:
+  #   image: caddy:2.3.0
+  #   container_name: caddy
+  #   ports:
+  #     - "3000:3000"
+  #     - "9090:9090"
+  #     - "9093:9093"
+  #     - "9091:9091"
+  #   volumes:
+  #     - ./monitoring/caddy:/etc/caddy
+  #   environment:
+  #     - ADMIN_USER=${ADMIN_USER:-admin}
+  #     - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+  #     - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH:-JDJhJDE0JE91S1FrN0Z0VEsyWmhrQVpON1VzdHVLSDkyWHdsN0xNbEZYdnNIZm1pb2d1blg4Y09mL0ZP}
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - ngnix
+  #   networks:
+  #     - monitor-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 

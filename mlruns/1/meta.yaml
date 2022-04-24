@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Data/taxi_trips/final_project_folder/taxi_trips/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: Decision_Tree Regression

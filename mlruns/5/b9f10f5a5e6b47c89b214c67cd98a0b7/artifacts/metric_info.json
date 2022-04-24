@@ -1,0 +1,11 @@
+{
+  "rmse_test_df": {
+    "evaluator_class": "pyspark.ml.evaluation.RegressionEvaluator",
+    "params": {
+      "labelCol": "fare_amount",
+      "metricName": "rmse",
+      "predictionCol": "prediction",
+      "throughOrigin": false
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "hierarchy": {
+    "name": "TrainValidationSplit",
+    "evaluator": {
+      "name": "RegressionEvaluator"
+    },
+    "tuned_estimator": {
+      "name": "DecisionTreeRegressor"
+    }
+  },
+  "TrainValidationSplit": {
+    "tuning_parameter_map_list": [
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 27,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 32,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 4,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 5,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 1
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 10
+      },
+      {
+        "DecisionTreeRegressor.maxBins": 37,
+        "DecisionTreeRegressor.maxDepth": 10,
+        "DecisionTreeRegressor.minInstancesPerNode": 20
+      }
+    ],
+    "tuned_estimator_parameter_map": {
+      "DecisionTreeRegressor.cacheNodeIds": false,
+      "DecisionTreeRegressor.checkpointInterval": 10,
+      "DecisionTreeRegressor.featuresCol": "unscaled_features",
+      "DecisionTreeRegressor.impurity": "variance",
+      "DecisionTreeRegressor.labelCol": "fare_amount",
+      "DecisionTreeRegressor.leafCol": "",
+      "DecisionTreeRegressor.maxBins": 32,
+      "DecisionTreeRegressor.maxDepth": 5,
+      "DecisionTreeRegressor.maxMemoryInMB": 2000,
+      "DecisionTreeRegressor.minInfoGain": 0.0,
+      "DecisionTreeRegressor.minInstancesPerNode": 1,
+      "DecisionTreeRegressor.minWeightFractionPerNode": 0.0,
+      "DecisionTreeRegressor.predictionCol": "prediction",
+      "DecisionTreeRegressor.seed": -310156599825799512
+    }
+  }
+}

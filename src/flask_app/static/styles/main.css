@@ -19,3 +19,10 @@ label {
     padding-left: 2px;
     font-weight: 600;
 }
+.error{
+    margin-bottom: 0px;
+    margin-top: 25px;
+    color: red;
+    font-weight: 500;
+    text-transform: capitalize;
+}

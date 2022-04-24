@@ -1,0 +1,38 @@
+{
+  "mae_unknown_dataset": {
+    "evaluator_class": "pyspark.ml.evaluation.RegressionEvaluator",
+    "params": {
+      "labelCol": "fare_amount",
+      "metricName": "mae",
+      "predictionCol": "prediction",
+      "throughOrigin": false
+    }
+  },
+  "mse_unknown_dataset": {
+    "evaluator_class": "pyspark.ml.evaluation.RegressionEvaluator",
+    "params": {
+      "labelCol": "fare_amount",
+      "metricName": "mse",
+      "predictionCol": "prediction",
+      "throughOrigin": false
+    }
+  },
+  "r2_unknown_dataset": {
+    "evaluator_class": "pyspark.ml.evaluation.RegressionEvaluator",
+    "params": {
+      "labelCol": "fare_amount",
+      "metricName": "r2",
+      "predictionCol": "prediction",
+      "throughOrigin": false
+    }
+  },
+  "rmse_unknown_dataset": {
+    "evaluator_class": "pyspark.ml.evaluation.RegressionEvaluator",
+    "params": {
+      "labelCol": "fare_amount",
+      "metricName": "rmse",
+      "predictionCol": "prediction",
+      "throughOrigin": false
+    }
+  }
+}

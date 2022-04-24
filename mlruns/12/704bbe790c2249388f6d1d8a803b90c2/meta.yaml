@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/12/704bbe790c2249388f6d1d8a803b90c2/artifacts
+end_time: 1649260647411
+entry_point_name: ''
+experiment_id: '12'
+lifecycle_stage: active
+name: ''
+run_id: 704bbe790c2249388f6d1d8a803b90c2
+run_uuid: 704bbe790c2249388f6d1d8a803b90c2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1649260643371
+status: 3
+tags: []
+user_id: vivek

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Data/taxi_trips/final_project_folder/taxi_trips/mlruns/1/6b3f42c58bf5441cb6e3d9f99fcc6058/artifacts
+end_time: 1648893874315
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 6b3f42c58bf5441cb6e3d9f99fcc6058
+run_uuid: 6b3f42c58bf5441cb6e3d9f99fcc6058
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1648888934928
+status: 3
+tags: []
+user_id: vivek

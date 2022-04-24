@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/4/ff3d84ee2f3843ea8a0f7befbaadac25/artifacts
+end_time: 1649073241406
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+name: ''
+run_id: ff3d84ee2f3843ea8a0f7befbaadac25
+run_uuid: ff3d84ee2f3843ea8a0f7befbaadac25
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1649073232705
+status: 4
+tags: []
+user_id: vivek

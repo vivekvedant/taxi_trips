@@ -1,0 +1,12 @@
+{
+    "Min":{
+        "trip_distance":0,
+        "fare_amount":0
+    },
+    "Max":{
+        "tpep_pickup_year":2020,
+        "tpep_dropoff_year":2020,
+        "fare_amount":2.50
+    }
+    
+}

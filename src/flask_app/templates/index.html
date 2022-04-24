@@ -16,13 +16,17 @@
     <div class = "container" id = "main_heading">
         <h2> Predict Taxi Fare amount</h2>
     </div>
+
     <div class="container">
+
         <form action="{{ url_for('predict') }}" method="post">
+
             <div class="form-group">
+                {% if errors %}<p class = "error">{{ errors['Location'] }}</p> {% endif %}
                 <label>pick up location</label><br>
                 <select class="form-control"  name = "pickup_location">
                     {% for  zone_name, location_id  in zone_list.items() %}
-                    <option  name = "{{ location_id }}" > {{ zone_name }} </option>
+                    <option  value = "{{ location_id }}" > {{ zone_name }} </option>
                     {% endfor %}
                 </select>
             </div>
@@ -30,23 +34,26 @@
                 <label>drop location</label><br>
                 <select class="form-control"  name = "dropoff_location">
                     {% for  zone_name, location_id  in zone_list.items() %}
-                    <option  name = "{{ location_id }}" > {{ zone_name }} </option>
+                    <option  value = "{{ location_id }}" > {{ zone_name }} </option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group">
+                {% if errors %}<p class = "error">{{ errors['PassengerCount'] }}</p>{% endif %}
                 <label>passenger count</label><br>
-                <input type = "text"  class="form-control" name = "passenger_count">
+                <input type = "text"  class="form-control" name = "passenger_count" required>
             </div>
+
             <div class=" form-group ">
                 <div class="row">
+                    {% if errors %} <p class = "error">{{ errors['Time'] }}</p>{% endif %}
                   <div class="col-md">
                     <label> Pick up time</label><br>
-                    <input type = "time" class="form-control currentTime" name = "pickup_time">
+                    <input type = "time" class="form-control currentTime" name = "pickup_time" required>
                   </div>
                   <div class="col-md">
                     <label> Pick up date</label><br>
-                    <input type = "date" class="form-control currentDate" name = "pickup_date">
+                    <input type = "date" class="form-control currentDate" name = "pickup_date" required>
 
                   </div>
                 </div>
@@ -55,11 +62,11 @@
                 <div class="row">
                   <div class="col-md">
                     <label> Dropoff  time</label><br>
-                    <input type = "time" class="form-control currentTime" name = "dropoff_time">
+                    <input type = "time" class="form-control currentTime" name = "dropoff_time" required>
                   </div>
                   <div class="col-md">
                     <label> Dropoff  date</label><br>
-                    <input type = "date" class="form-control currentDate" name = "dropoff_date">
+                    <input type = "date" class="form-control currentDate" name = "dropoff_date" required>
 
                   </div>
                 </div>
@@ -68,6 +75,7 @@
             <div class="form-group">   <button type = "submit" id = "submit_btn"> Predict</button></div>
 
         </form>
+
     </div>
 
     <script>

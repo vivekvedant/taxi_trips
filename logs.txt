@@ -1,0 +1,876 @@
+ngnix  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+ngnix  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+ngnix  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+ngnix  | 10-listen-on-ipv6-by-default.sh: info: /etc/nginx/conf.d/default.conf is not a file or does not exist
+ngnix  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+ngnix  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+ngnix  | /docker-entrypoint.sh: Configuration complete; ready for start up
+ngnix  | 172.20.0.1 - - [23/Apr/2022:09:01:01 +0000] "GET / HTTP/1.1" 200 51418 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "-"
+ngnix                      | 172.20.0.1 - - [23/Apr/2022:09:01:01 +0000] "GET /static/styles/main.css HTTP/1.1" 304 0 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "-"
+ngnix                      | 172.20.0.1 - - [23/Apr/2022:09:01:59 +0000] "POST /predict HTTP/1.1" 500 290 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" "-"
+flask_app                  | [2022-04-23 09:00:39 +0000] [1] [INFO] Starting gunicorn 20.1.0
+loki                       | level=info ts=2022-04-23T09:00:36.7835152Z caller=loki.go:149 msg=initialising module=server
+loki                       | level=info ts=2022-04-23T09:00:36.7849702Z caller=server.go:121 http=[::]:3100 grpc=[::]:9095 msg="server listening on addresses"
+loki                       | level=info ts=2022-04-23T09:00:36.7886311Z caller=loki.go:149 msg=initialising module=overrides
+flask_app                  | [2022-04-23 09:00:39 +0000] [1] [INFO] Listening at: http://0.0.0.0:5000 (1)
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.76 [0m
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.76 [0m
+loki                       | level=info ts=2022-04-23T09:00:36.7887461Z caller=override.go:53 msg="per-tenant overrides disabled"
+loki                       | level=info ts=2022-04-23T09:00:36.7890011Z caller=loki.go:149 msg=initialising module=table-manager
+loki                       | level=info ts=2022-04-23T09:00:36.7904856Z caller=loki.go:149 msg=initialising module=store
+loki                       | level=info ts=2022-04-23T09:00:36.7912545Z caller=loki.go:149 msg=initialising module=ring
+loki                       | level=info ts=2022-04-23T09:00:36.7984038Z caller=client.go:212 msg="value is nil" key=collectors/ring index=1
+loki                       | level=info ts=2022-04-23T09:00:36.7984659Z caller=loki.go:149 msg=initialising module=querier
+loki                       | level=info ts=2022-04-23T09:00:36.7986372Z caller=worker.go:72 msg="no address specified, not starting worker"
+loki                       | level=info ts=2022-04-23T09:00:36.7992558Z caller=loki.go:149 msg=initialising module=ingester
+loki                       | level=info ts=2022-04-23T09:00:36.79992Z caller=loki.go:149 msg=initialising module=distributor
+loki                       | level=info ts=2022-04-23T09:00:36.7999388Z caller=table_manager.go:220 msg="synching tables" expected_tables=211
+loki                       | level=info ts=2022-04-23T09:00:36.8000822Z caller=lifecycler.go:471 msg="not loading tokens from file, tokens file path is empty"
+loki                       | level=info ts=2022-04-23T09:00:36.8002215Z caller=loki.go:149 msg=initialising module=all
+loki                       | level=info ts=2022-04-23T09:00:36.8002696Z caller=main.go:70 msg="Starting Loki" version="(version=v1.3.0, branch=HEAD, revision=5e527a03)"
+loki                       | level=info ts=2022-04-23T09:00:36.8003091Z caller=table_manager.go:363 msg="creating table" table=index_2667
+loki                       | level=info ts=2022-04-23T09:00:36.80035Z caller=table_manager.go:363 msg="creating table" table=index_2672
+loki                       | level=info ts=2022-04-23T09:00:36.8003722Z caller=table_manager.go:363 msg="creating table" table=index_2693
+loki                       | level=info ts=2022-04-23T09:00:36.8003866Z caller=table_manager.go:363 msg="creating table" table=index_2709
+loki                       | level=info ts=2022-04-23T09:00:36.8004054Z caller=table_manager.go:363 msg="creating table" table=index_2626
+loki                       | level=info ts=2022-04-23T09:00:36.8004241Z caller=table_manager.go:363 msg="creating table" table=index_2670
+loki                       | level=info ts=2022-04-23T09:00:36.8004354Z caller=table_manager.go:363 msg="creating table" table=index_2698
+loki                       | level=info ts=2022-04-23T09:00:36.8004463Z caller=table_manager.go:363 msg="creating table" table=index_2595
+loki                       | level=info ts=2022-04-23T09:00:36.8004606Z caller=table_manager.go:363 msg="creating table" table=index_2620
+loki                       | level=info ts=2022-04-23T09:00:36.8004811Z caller=table_manager.go:363 msg="creating table" table=index_2691
+loki                       | level=info ts=2022-04-23T09:00:36.8004949Z caller=table_manager.go:363 msg="creating table" table=index_2715
+loki                       | level=info ts=2022-04-23T09:00:36.8005071Z caller=table_manager.go:363 msg="creating table" table=index_2598
+loki                       | level=info ts=2022-04-23T09:00:36.800566Z caller=table_manager.go:363 msg="creating table" table=index_2614
+flask_app                  | [2022-04-23 09:00:39 +0000] [1] [INFO] Using worker: sync
+flask_app                  | [2022-04-23 09:00:39 +0000] [9] [INFO] Booting worker with pid: 9
+flask_app                  | INFO:root:Setting LOGLEVEL to INFO
+flask_app                  | Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+flask_app                  | Setting default log level to "WARN".
+flask_app                  | To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+flask_app                  | 22/04/23 09:01:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+flask_app                  | INFO:py4j.clientserver:Error while receiving.
+flask_app                  | Traceback (most recent call last):
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/clientserver.py", line 480, in send_command
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.76 [0m[1mWelcome to the Bitnami spark container[0m
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.77 [0mSubscribe to project updates by watching [1mhttps://github.com/bitnami/bitnami-docker-spark[0m
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.77 [0mSubmit issues and feature requests at [1mhttps://github.com/bitnami/bitnami-docker-spark/issues[0m
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.77 [0m
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.80 [0m[38;5;2mINFO [0m ==> ** Starting Spark setup **
+taxi_trips-spark-worker-1  | realpath: /bitnami/spark/conf: No such file or directory
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.84 [0m[38;5;2mINFO [0m ==> Generating Spark configuration file...
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.85 [0m[38;5;2mINFO [0m ==> ** Spark setup finished! **
+taxi_trips-spark-worker-1  | 
+taxi_trips-spark-worker-1  | [38;5;6m [38;5;5m09:00:36.88 [0m[38;5;2mINFO [0m ==> ** Starting Spark in worker mode **
+loki                       | level=info ts=2022-04-23T09:00:36.8005823Z caller=table_manager.go:363 msg="creating table" table=index_2679
+loki                       | level=info ts=2022-04-23T09:00:36.8005975Z caller=table_manager.go:363 msg="creating table" table=index_2527
+loki                       | level=info ts=2022-04-23T09:00:36.8006171Z caller=table_manager.go:363 msg="creating table" table=index_2545
+loki                       | level=info ts=2022-04-23T09:00:36.8006384Z caller=table_manager.go:363 msg="creating table" table=index_2594
+loki                       | level=info ts=2022-04-23T09:00:36.8006897Z caller=table_manager.go:363 msg="creating table" table=index_2601
+loki                       | level=info ts=2022-04-23T09:00:36.8007117Z caller=table_manager.go:363 msg="creating table" table=index_2666
+loki                       | level=info ts=2022-04-23T09:00:36.800881Z caller=table_manager.go:363 msg="creating table" table=index_2539
+loki                       | level=info ts=2022-04-23T09:00:36.8009391Z caller=table_manager.go:363 msg="creating table" table=index_2587
+loki                       | level=info ts=2022-04-23T09:00:36.8010043Z caller=table_manager.go:363 msg="creating table" table=index_2575
+loki                       | level=info ts=2022-04-23T09:00:36.8010221Z caller=table_manager.go:363 msg="creating table" table=index_2597
+loki                       | level=info ts=2022-04-23T09:00:36.8010516Z caller=table_manager.go:363 msg="creating table" table=index_2555
+loki                       | level=info ts=2022-04-23T09:00:36.8010492Z caller=lifecycler.go:495 msg="instance not found in ring, adding with no tokens" ring=ingester
+loki                       | level=info ts=2022-04-23T09:00:36.8010654Z caller=table_manager.go:363 msg="creating table" table=index_2584
+loki                       | level=info ts=2022-04-23T09:00:36.8010865Z caller=table_manager.go:363 msg="creating table" table=index_2657
+loki                       | level=info ts=2022-04-23T09:00:36.8011785Z caller=table_manager.go:363 msg="creating table" table=index_2519
+loki                       | level=info ts=2022-04-23T09:00:36.8012371Z caller=table_manager.go:363 msg="creating table" table=index_2536
+loki                       | level=info ts=2022-04-23T09:00:36.8012566Z caller=table_manager.go:363 msg="creating table" table=index_2633
+loki                       | level=info ts=2022-04-23T09:00:36.8012726Z caller=table_manager.go:363 msg="creating table" table=index_2642
+loki                       | level=info ts=2022-04-23T09:00:36.8012871Z caller=table_manager.go:363 msg="creating table" table=index_2644
+loki                       | level=info ts=2022-04-23T09:00:36.8013019Z caller=table_manager.go:363 msg="creating table" table=index_2675
+loki                       | level=info ts=2022-04-23T09:00:36.8013237Z caller=table_manager.go:363 msg="creating table" table=index_2563
+loki                       | level=info ts=2022-04-23T09:00:36.8013763Z caller=table_manager.go:363 msg="creating table" table=index_2625
+loki                       | level=info ts=2022-04-23T09:00:36.8013953Z caller=table_manager.go:363 msg="creating table" table=index_2581
+loki                       | level=info ts=2022-04-23T09:00:36.8014148Z caller=table_manager.go:363 msg="creating table" table=index_2591
+loki                       | level=info ts=2022-04-23T09:00:36.8014318Z caller=table_manager.go:363 msg="creating table" table=index_2716
+loki                       | level=info ts=2022-04-23T09:00:36.8014511Z caller=table_manager.go:363 msg="creating table" table=index_2551
+loki                       | level=info ts=2022-04-23T09:00:36.801465Z caller=table_manager.go:363 msg="creating table" table=index_2570
+loki                       | level=info ts=2022-04-23T09:00:36.801516Z caller=table_manager.go:363 msg="creating table" table=index_2661
+loki                       | level=info ts=2022-04-23T09:00:36.8015808Z caller=table_manager.go:363 msg="creating table" table=index_2727
+loki                       | level=info ts=2022-04-23T09:00:36.8015993Z caller=table_manager.go:363 msg="creating table" table=index_2537
+loki                       | level=info ts=2022-04-23T09:00:36.8016162Z caller=table_manager.go:363 msg="creating table" table=index_2576
+loki                       | level=info ts=2022-04-23T09:00:36.8016354Z caller=table_manager.go:363 msg="creating table" table=index_2694
+loki                       | level=info ts=2022-04-23T09:00:36.8016479Z caller=table_manager.go:363 msg="creating table" table=index_2552
+loki                       | level=info ts=2022-04-23T09:00:36.8016602Z caller=table_manager.go:363 msg="creating table" table=index_2582
+loki                       | level=info ts=2022-04-23T09:00:36.8016776Z caller=table_manager.go:363 msg="creating table" table=index_2685
+loki                       | level=info ts=2022-04-23T09:00:36.8017287Z caller=table_manager.go:363 msg="creating table" table=index_2725
+loki                       | level=info ts=2022-04-23T09:00:36.8017535Z caller=table_manager.go:363 msg="creating table" table=index_2528
+loki                       | level=info ts=2022-04-23T09:00:36.8017685Z caller=table_manager.go:363 msg="creating table" table=index_2583
+loki                       | level=info ts=2022-04-23T09:00:36.8017795Z caller=table_manager.go:363 msg="creating table" table=index_2635
+loki                       | level=info ts=2022-04-23T09:00:36.8017974Z caller=table_manager.go:363 msg="creating table" table=index_2702
+taxi_trips-spark-worker-1  | starting org.apache.spark.deploy.worker.Worker, logging to /opt/bitnami/spark/logs/spark--org.apache.spark.deploy.worker.Worker-1-086ed325bf39.out
+taxi_trips-spark-worker-1  | Spark Command: /opt/bitnami/java/bin/java -cp /opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/* -Xmx1g org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://spark:7077
+taxi_trips-spark-worker-1  | ========================================
+taxi_trips-spark-worker-1  | Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+taxi_trips-spark-worker-1  | 22/04/23 09:00:39 INFO Worker: Started daemon with process name: 38@086ed325bf39
+taxi_trips-spark-worker-1  | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for TERM
+taxi_trips-spark-worker-1  | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for HUP
+taxi_trips-spark-worker-1  | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for INT
+taxi_trips-spark-worker-1  | 22/04/23 09:00:39 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.76 [0m[1mWelcome to the Bitnami spark container[0m
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.77 [0mSubscribe to project updates by watching [1mhttps://github.com/bitnami/bitnami-docker-spark[0m
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.77 [0mSubmit issues and feature requests at [1mhttps://github.com/bitnami/bitnami-docker-spark/issues[0m
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.77 [0m
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.79 [0m[38;5;2mINFO [0m ==> ** Starting Spark setup **
+taxi_trips-spark-1         | realpath: /bitnami/spark/conf: No such file or directory
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.84 [0m[38;5;2mINFO [0m ==> Generating Spark configuration file...
+loki                       | level=info ts=2022-04-23T09:00:36.8018195Z caller=table_manager.go:363 msg="creating table" table=index_2704
+loki                       | level=info ts=2022-04-23T09:00:36.8018728Z caller=table_manager.go:363 msg="creating table" table=index_2721
+loki                       | level=info ts=2022-04-23T09:00:36.8019001Z caller=table_manager.go:363 msg="creating table" table=index_2529
+loki                       | level=info ts=2022-04-23T09:00:36.8019217Z caller=table_manager.go:363 msg="creating table" table=index_2577
+loki                       | level=info ts=2022-04-23T09:00:36.8019892Z caller=table_manager.go:363 msg="creating table" table=index_2684
+loki                       | level=info ts=2022-04-23T09:00:36.8020025Z caller=table_manager.go:363 msg="creating table" table=index_2647
+loki                       | level=info ts=2022-04-23T09:00:36.8020094Z caller=table_manager.go:363 msg="creating table" table=index_2655
+loki                       | level=info ts=2022-04-23T09:00:36.8020226Z caller=table_manager.go:363 msg="creating table" table=index_2615
+loki                       | level=info ts=2022-04-23T09:00:36.8020383Z caller=table_manager.go:363 msg="creating table" table=index_2621
+loki                       | level=info ts=2022-04-23T09:00:36.8020809Z caller=table_manager.go:363 msg="creating table" table=index_2652
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO Utils: Successfully started service 'sparkWorker' on port 43695.
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO Worker: Worker decommissioning not enabled.
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO Worker: Starting Spark worker 172.20.0.2:43695 with 1 cores, 1024.0 MiB RAM
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO Worker: Running Spark version 3.2.1
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO Worker: Spark home: /opt/bitnami/spark
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO ResourceUtils: ==============================================================
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO ResourceUtils: No custom resources configured for spark.worker.
+taxi_trips-spark-worker-1  | 22/04/23 09:00:40 INFO ResourceUtils: ==============================================================
+taxi_trips-spark-worker-1  | 22/04/23 09:00:41 INFO Utils: Successfully started service 'WorkerUI' on port 8081.
+taxi_trips-spark-worker-1  | 22/04/23 09:00:41 INFO WorkerWebUI: Bound WorkerWebUI to 0.0.0.0, and started at http://086ed325bf39:8081
+taxi_trips-spark-worker-1  | 22/04/23 09:00:41 INFO Worker: Connecting to master spark:7077...
+loki                       | level=info ts=2022-04-23T09:00:36.8020942Z caller=table_manager.go:363 msg="creating table" table=index_2673
+loki                       | level=info ts=2022-04-23T09:00:36.8021051Z caller=table_manager.go:363 msg="creating table" table=index_2540
+loki                       | level=info ts=2022-04-23T09:00:36.8021158Z caller=table_manager.go:363 msg="creating table" table=index_2588
+loki                       | level=info ts=2022-04-23T09:00:36.8021264Z caller=table_manager.go:363 msg="creating table" table=index_2682
+loki                       | level=info ts=2022-04-23T09:00:36.802143Z caller=table_manager.go:363 msg="creating table" table=index_2728
+loki                       | level=info ts=2022-04-23T09:00:36.8021518Z caller=table_manager.go:363 msg="creating table" table=index_2554
+loki                       | level=info ts=2022-04-23T09:00:36.8021581Z caller=table_manager.go:363 msg="creating table" table=index_2593
+loki                       | level=info ts=2022-04-23T09:00:36.8021644Z caller=table_manager.go:363 msg="creating table" table=index_2697
+loki                       | level=info ts=2022-04-23T09:00:36.8021705Z caller=table_manager.go:363 msg="creating table" table=index_2706
+loki                       | level=info ts=2022-04-23T09:00:36.8021767Z caller=table_manager.go:363 msg="creating table" table=index_2579
+loki                       | level=info ts=2022-04-23T09:00:36.8021828Z caller=table_manager.go:363 msg="creating table" table=index_2636
+loki                       | level=info ts=2022-04-23T09:00:36.8021892Z caller=table_manager.go:363 msg="creating table" table=index_2580
+loki                       | level=info ts=2022-04-23T09:00:36.802203Z caller=table_manager.go:363 msg="creating table" table=index_2618
+loki                       | level=info ts=2022-04-23T09:00:36.8022143Z caller=table_manager.go:363 msg="creating table" table=index_2643
+loki                       | level=info ts=2022-04-23T09:00:36.8022614Z caller=table_manager.go:363 msg="creating table" table=index_2526
+loki                       | level=info ts=2022-04-23T09:00:36.8022782Z caller=table_manager.go:363 msg="creating table" table=index_2544
+loki                       | level=info ts=2022-04-23T09:00:36.8022897Z caller=table_manager.go:363 msg="creating table" table=index_2568
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.85 [0m[38;5;2mINFO [0m ==> ** Spark setup finished! **
+taxi_trips-spark-1         | 
+taxi_trips-spark-1         | [38;5;6m [38;5;5m09:00:36.88 [0m[38;5;2mINFO [0m ==> ** Starting Spark in master mode **
+taxi_trips-spark-1         | starting org.apache.spark.deploy.master.Master, logging to /opt/bitnami/spark/logs/spark--org.apache.spark.deploy.master.Master-1-d3c100ed7f8f.out
+taxi_trips-spark-1         | Spark Command: /opt/bitnami/java/bin/java -cp /opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/* -Xmx1g org.apache.spark.deploy.master.Master --host d3c100ed7f8f --port 7077 --webui-port 8080
+taxi_trips-spark-1         | ========================================
+taxi_trips-spark-1         | Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+taxi_trips-spark-1         | 22/04/23 09:00:39 INFO Master: Started daemon with process name: 41@d3c100ed7f8f
+taxi_trips-spark-1         | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for TERM
+taxi_trips-spark-1         | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for HUP
+taxi_trips-spark-1         | 22/04/23 09:00:39 INFO SignalUtils: Registering signal handler for INT
+flask_app                  |     raise Py4JNetworkError("Answer from Java side is empty")
+flask_app                  | py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+flask_app                  | INFO:py4j.clientserver:Closing down clientserver connection
+flask_app                  | ERROR:root:Exception while sending command.
+flask_app                  | Traceback (most recent call last):
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/clientserver.py", line 480, in send_command
+taxi_trips-spark-1         | 22/04/23 09:00:39 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+taxi_trips-spark-1         | 22/04/23 09:00:39 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO Utils: Successfully started service 'sparkMaster' on port 7077.
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO Master: Starting Spark master at spark://d3c100ed7f8f:7077
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO Master: Running Spark version 3.2.1
+taxi_trips-spark-1         | 22/04/23 09:00:40 INFO Utils: Successfully started service 'MasterUI' on port 8080.
+taxi_trips-spark-1         | 22/04/23 09:00:41 INFO MasterWebUI: Bound MasterWebUI to 0.0.0.0, and started at http://d3c100ed7f8f:8080
+taxi_trips-spark-1         | 22/04/23 09:00:41 INFO Master: I have been elected leader! New state: ALIVE
+taxi_trips-spark-1         | 22/04/23 09:00:41 INFO Master: Registering worker 172.20.0.2:43695 with 1 cores, 1024.0 MiB RAM
+taxi_trips-spark-1         | 22/04/23 09:01:48 INFO Master: Registering app taxi_fare_amount_prediction
+taxi_trips-spark-1         | 22/04/23 09:01:48 INFO Master: Registered app taxi_fare_amount_prediction with ID app-20220423090148-0000
+taxi_trips-spark-1         | 22/04/23 09:01:48 INFO Master: Launching executor app-20220423090148-0000/0 on worker worker-20220423090040-172.20.0.2-43695
+taxi_trips-spark-1         | 22/04/23 09:01:51 INFO Master: Removing executor app-20220423090148-0000/0 because it is EXITED
+taxi_trips-spark-1         | 22/04/23 09:01:51 INFO Master: Launching executor app-20220423090148-0000/1 on worker worker-20220423090040-172.20.0.2-43695
+taxi_trips-spark-1         | 22/04/23 09:01:54 INFO Master: Removing executor app-20220423090148-0000/1 because it is EXITED
+taxi_trips-spark-1         | 22/04/23 09:01:54 INFO Master: Launching executor app-20220423090148-0000/2 on worker worker-20220423090040-172.20.0.2-43695
+taxi_trips-spark-1         | 22/04/23 09:01:56 INFO Master: Removing executor app-20220423090148-0000/2 because it is EXITED
+taxi_trips-spark-1         | 22/04/23 09:01:56 INFO Master: Launching executor app-20220423090148-0000/3 on worker worker-20220423090040-172.20.0.2-43695
+taxi_trips-spark-1         | 22/04/23 09:01:59 INFO Master: Removing executor app-20220423090148-0000/3 because it is EXITED
+taxi_trips-spark-1         | 22/04/23 09:01:59 INFO Master: Launching executor app-20220423090148-0000/4 on worker worker-20220423090040-172.20.0.2-43695
+taxi_trips-spark-1         | 22/04/23 09:01:59 WARN TransportChannelHandler: Exception in connection from /172.20.0.4:46294
+taxi_trips-spark-1         | java.io.IOException: Connection reset by peer
+taxi_trips-spark-1         | 	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+taxi_trips-spark-1         | 	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+taxi_trips-spark-1         | 	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+taxi_trips-spark-1         | 	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+taxi_trips-spark-1         | 	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379)
+taxi_trips-spark-1         | 	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+taxi_trips-spark-worker-1  | 22/04/23 09:00:41 INFO TransportClientFactory: Successfully created connection to spark/172.20.0.3:7077 after 76 ms (0 ms spent in bootstraps)
+taxi_trips-spark-worker-1  | 22/04/23 09:00:41 INFO Worker: Successfully registered with master spark://d3c100ed7f8f:7077
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO Worker: Asked to launch executor app-20220423090148-0000/0 for taxi_fare_amount_prediction
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:01:48 INFO ExecutorRunner: Launch command: "/opt/bitnami/java/bin/java" "-cp" "/opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=41877" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@localhost:41877" "--executor-id" "0" "--hostname" "172.20.0.2" "--cores" "1" "--app-id" "app-20220423090148-0000" "--worker-url" "spark://Worker@172.20.0.2:43695"
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO Worker: Executor app-20220423090148-0000/0 finished with state EXITED message Command exited with code 1 exitStatus 1
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 0
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20220423090148-0000, execId=0)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO Worker: Asked to launch executor app-20220423090148-0000/1 for taxi_fare_amount_prediction
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:01:51 INFO ExecutorRunner: Launch command: "/opt/bitnami/java/bin/java" "-cp" "/opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=41877" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@localhost:41877" "--executor-id" "1" "--hostname" "172.20.0.2" "--cores" "1" "--app-id" "app-20220423090148-0000" "--worker-url" "spark://Worker@172.20.0.2:43695"
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO Worker: Executor app-20220423090148-0000/1 finished with state EXITED message Command exited with code 1 exitStatus 1
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 1
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20220423090148-0000, execId=1)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO Worker: Asked to launch executor app-20220423090148-0000/2 for taxi_fare_amount_prediction
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-1         | 	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+taxi_trips-spark-1         | 	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+taxi_trips-spark-1         | 	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+taxi_trips-spark-1         | 	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:719)
+taxi_trips-spark-1         | 	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655)
+taxi_trips-spark-1         | 	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:01:54 INFO ExecutorRunner: Launch command: "/opt/bitnami/java/bin/java" "-cp" "/opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=41877" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@localhost:41877" "--executor-id" "2" "--hostname" "172.20.0.2" "--cores" "1" "--app-id" "app-20220423090148-0000" "--worker-url" "spark://Worker@172.20.0.2:43695"
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO Worker: Executor app-20220423090148-0000/2 finished with state EXITED message Command exited with code 1 exitStatus 1
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 2
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20220423090148-0000, execId=2)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO Worker: Asked to launch executor app-20220423090148-0000/3 for taxi_fare_amount_prediction
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO SecurityManager: Changing view acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:01:56 INFO ExecutorRunner: Launch command: "/opt/bitnami/java/bin/java" "-cp" "/opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=41877" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@localhost:41877" "--executor-id" "3" "--hostname" "172.20.0.2" "--cores" "1" "--app-id" "app-20220423090148-0000" "--worker-url" "spark://Worker@172.20.0.2:43695"
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO Worker: Executor app-20220423090148-0000/3 finished with state EXITED message Command exited with code 1 exitStatus 1
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 3
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20220423090148-0000, execId=3)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO Worker: Asked to launch executor app-20220423090148-0000/4 for taxi_fare_amount_prediction
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO SecurityManager: Changing view acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO SecurityManager: Changing modify acls to: spark
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO SecurityManager: Changing view acls groups to: 
+flask_app                  |     raise Py4JNetworkError("Answer from Java side is empty")
+flask_app                  | py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+flask_app                  | 
+flask_app                  | During handling of the above exception, another exception occurred:
+flask_app                  | 
+flask_app                  | Traceback (most recent call last):
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/java_gateway.py", line 1038, in send_command
+flask_app                  |     response = connection.send_command(command)
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/clientserver.py", line 504, in send_command
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO SecurityManager: Changing modify acls groups to: 
+taxi_trips-spark-1         | 	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+taxi_trips-spark-1         | 	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+taxi_trips-spark-1         | 	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+taxi_trips-spark-1         | 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+taxi_trips-spark-1         | 	at java.lang.Thread.run(Thread.java:750)
+taxi_trips-spark-1         | 22/04/23 09:01:59 INFO Master: 172.20.0.4:46294 got disassociated, removing it.
+loki                       | level=info ts=2022-04-23T09:00:36.8037522Z caller=table_manager.go:363 msg="creating table" table=index_2662
+loki                       | level=info ts=2022-04-23T09:00:36.8038375Z caller=table_manager.go:363 msg="creating table" table=index_2531
+loki                       | level=info ts=2022-04-23T09:00:36.803901Z caller=table_manager.go:363 msg="creating table" table=index_2560
+loki                       | level=info ts=2022-04-23T09:00:36.8039534Z caller=table_manager.go:363 msg="creating table" table=index_2589
+loki                       | level=info ts=2022-04-23T09:00:36.8040753Z caller=table_manager.go:363 msg="creating table" table=index_2631
+loki                       | level=info ts=2022-04-23T09:00:36.804201Z caller=table_manager.go:363 msg="creating table" table=index_2650
+taxi_trips-spark-1         | 22/04/23 09:01:59 INFO Master: localhost:41877 got disassociated, removing it.
+taxi_trips-spark-1         | 22/04/23 09:01:59 INFO Master: Removing app app-20220423090148-0000
+taxi_trips-spark-1         | 22/04/23 09:01:59 WARN Master: Got status update for unknown executor app-20220423090148-0000/4
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExecutorRunner: Launch command: "/opt/bitnami/java/bin/java" "-cp" "/opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/*" "-Xmx1024M" "-Dspark.driver.port=41877" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@localhost:41877" "--executor-id" "4" "--hostname" "172.20.0.2" "--cores" "1" "--app-id" "app-20220423090148-0000" "--worker-url" "spark://Worker@172.20.0.2:43695"
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO Worker: Asked to kill executor app-20220423090148-0000/4
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExecutorRunner: Runner thread for executor app-20220423090148-0000/4 interrupted
+flask_app                  |     "Error while sending or receiving", e, proto.ERROR_ON_RECEIVE)
+flask_app                  | py4j.protocol.Py4JNetworkError: Error while sending or receiving
+flask_app                  | ERROR:app:Exception on /predict [POST]
+flask_app                  | Traceback (most recent call last):
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2073, in wsgi_app
+flask_app                  |     response = self.full_dispatch_request()
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1518, in full_dispatch_request
+flask_app                  |     rv = self.handle_user_exception(e)
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1516, in full_dispatch_request
+loki                       | level=info ts=2022-04-23T09:00:36.8042776Z caller=table_manager.go:363 msg="creating table" table=index_2561
+loki                       | level=info ts=2022-04-23T09:00:36.8043056Z caller=table_manager.go:363 msg="creating table" table=index_2572
+loki                       | level=info ts=2022-04-23T09:00:36.8031616Z caller=lifecycler.go:363 msg="auto-joining cluster after timeout" ring=ingester
+loki                       | level=info ts=2022-04-23T09:00:36.8043332Z caller=table_manager.go:363 msg="creating table" table=index_2640
+loki                       | level=info ts=2022-04-23T09:00:36.8043653Z caller=table_manager.go:363 msg="creating table" table=index_2665
+loki                       | level=info ts=2022-04-23T09:00:36.804388Z caller=table_manager.go:363 msg="creating table" table=index_2562
+loki                       | level=info ts=2022-04-23T09:00:36.8044021Z caller=table_manager.go:363 msg="creating table" table=index_2585
+loki                       | level=info ts=2022-04-23T09:00:36.8044139Z caller=table_manager.go:363 msg="creating table" table=index_2617
+flask_app                  |     rv = self.dispatch_request()
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1502, in dispatch_request
+flask_app                  |     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+flask_app                  |   File "/taxi_trips/src/flask_app/app.py", line 63, in predict
+flask_app                  |     pickup_date,dropoff_time,dropoff_date)
+flask_app                  |   File "/taxi_trips/src/models/predict.py", line 83, in predict_api
+loki                       | level=info ts=2022-04-23T09:00:36.8044377Z caller=table_manager.go:363 msg="creating table" table=index_2653
+loki                       | level=info ts=2022-04-23T09:00:36.8044955Z caller=table_manager.go:363 msg="creating table" table=index_2703
+loki                       | level=info ts=2022-04-23T09:00:36.8045131Z caller=table_manager.go:363 msg="creating table" table=index_2533
+loki                       | level=info ts=2022-04-23T09:00:36.804526Z caller=table_manager.go:363 msg="creating table" table=index_2603
+loki                       | level=info ts=2022-04-23T09:00:36.8045412Z caller=table_manager.go:363 msg="creating table" table=index_2637
+loki                       | level=info ts=2022-04-23T09:00:36.8045538Z caller=table_manager.go:363 msg="creating table" table=index_2712
+loki                       | level=info ts=2022-04-23T09:00:36.804576Z caller=table_manager.go:363 msg="creating table" table=index_2534
+loki                       | level=info ts=2022-04-23T09:00:36.8045893Z caller=table_manager.go:363 msg="creating table" table=index_2596
+flask_app                  |     spark_dataframe = spark.createDataFrame(data=data_dict)
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/pyspark/sql/session.py", line 675, in createDataFrame
+flask_app                  |     return self._create_dataframe(data, schema, samplingRatio, verifySchema)
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/pyspark/sql/session.py", line 702, in _create_dataframe
+flask_app                  |     jdf = self._jsparkSession.applySchemaToPythonRDD(jrdd.rdd(), schema.json())
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExecutorRunner: Killing process!
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO Worker: Executor app-20220423090148-0000/4 finished with state KILLED exitStatus 143
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 4
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20220423090148-0000, execId=4)
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO Worker: Cleaning up local directories for application app-20220423090148-0000
+taxi_trips-spark-worker-1  | 22/04/23 09:01:59 INFO ExternalShuffleBlockResolver: Application app-20220423090148-0000 removed, cleanupLocalDirs = true
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/java_gateway.py", line 1322, in __call__
+flask_app                  |     answer, self.gateway_client, self.target_id, self.name)
+loki                       | level=info ts=2022-04-23T09:00:36.8046434Z caller=table_manager.go:363 msg="creating table" table=index_2611
+loki                       | level=info ts=2022-04-23T09:00:36.8046622Z caller=table_manager.go:363 msg="creating table" table=index_2619
+loki                       | level=info ts=2022-04-23T09:00:36.8048467Z caller=table_manager.go:363 msg="creating table" table=index_2634
+loki                       | level=info ts=2022-04-23T09:00:36.8050964Z caller=table_manager.go:363 msg="creating table" table=index_2663
+loki                       | level=info ts=2022-04-23T09:00:36.8051558Z caller=table_manager.go:363 msg="creating table" table=index_2717
+loki                       | level=info ts=2022-04-23T09:00:36.8055243Z caller=table_manager.go:363 msg="creating table" table=index_2718
+loki                       | level=info ts=2022-04-23T09:00:36.8055792Z caller=table_manager.go:363 msg="creating table" table=index_2525
+loki                       | level=info ts=2022-04-23T09:00:36.805597Z caller=table_manager.go:363 msg="creating table" table=index_2557
+loki                       | level=info ts=2022-04-23T09:00:36.8056096Z caller=table_manager.go:363 msg="creating table" table=index_2720
+loki                       | level=info ts=2022-04-23T09:00:36.8056215Z caller=table_manager.go:363 msg="creating table" table=index_2549
+loki                       | level=info ts=2022-04-23T09:00:36.8056331Z caller=table_manager.go:363 msg="creating table" table=index_2714
+loki                       | level=info ts=2022-04-23T09:00:36.8056821Z caller=table_manager.go:363 msg="creating table" table=index_2630
+loki                       | level=info ts=2022-04-23T09:00:36.8057003Z caller=table_manager.go:363 msg="creating table" table=index_2641
+loki                       | level=info ts=2022-04-23T09:00:36.8057215Z caller=table_manager.go:363 msg="creating table" table=index_2659
+loki                       | level=info ts=2022-04-23T09:00:36.8057729Z caller=table_manager.go:363 msg="creating table" table=index_2683
+loki                       | level=info ts=2022-04-23T09:00:36.8057909Z caller=table_manager.go:363 msg="creating table" table=index_2586
+loki                       | level=info ts=2022-04-23T09:00:36.8058354Z caller=table_manager.go:363 msg="creating table" table=index_2599
+loki                       | level=info ts=2022-04-23T09:00:36.8058519Z caller=table_manager.go:363 msg="creating table" table=index_2658
+loki                       | level=info ts=2022-04-23T09:00:36.8058645Z caller=table_manager.go:363 msg="creating table" table=index_2689
+loki                       | level=info ts=2022-04-23T09:00:36.8058761Z caller=table_manager.go:363 msg="creating table" table=index_2521
+loki                       | level=info ts=2022-04-23T09:00:36.8058875Z caller=table_manager.go:363 msg="creating table" table=index_2556
+loki                       | level=info ts=2022-04-23T09:00:36.8058984Z caller=table_manager.go:363 msg="creating table" table=index_2651
+loki                       | level=info ts=2022-04-23T09:00:36.8059091Z caller=table_manager.go:363 msg="creating table" table=index_2686
+loki                       | level=info ts=2022-04-23T09:00:36.8059194Z caller=table_manager.go:363 msg="creating table" table=index_2613
+loki                       | level=info ts=2022-04-23T09:00:36.8059621Z caller=table_manager.go:363 msg="creating table" table=index_2649
+loki                       | level=info ts=2022-04-23T09:00:36.8059957Z caller=table_manager.go:363 msg="creating table" table=index_2543
+loki                       | level=info ts=2022-04-23T09:00:36.8060446Z caller=table_manager.go:363 msg="creating table" table=index_2726
+loki                       | level=info ts=2022-04-23T09:00:36.8060628Z caller=table_manager.go:363 msg="creating table" table=index_2699
+loki                       | level=info ts=2022-04-23T09:00:36.8060756Z caller=table_manager.go:363 msg="creating table" table=index_2711
+loki                       | level=info ts=2022-04-23T09:00:36.8060876Z caller=table_manager.go:363 msg="creating table" table=index_2522
+loki                       | level=info ts=2022-04-23T09:00:36.8061315Z caller=table_manager.go:363 msg="creating table" table=index_2690
+loki                       | level=info ts=2022-04-23T09:00:36.8061472Z caller=table_manager.go:363 msg="creating table" table=index_2654
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/pyspark/sql/utils.py", line 111, in deco
+flask_app                  |     return f(*a, **kw)
+flask_app                  |   File "/usr/local/lib/python3.7/site-packages/py4j/protocol.py", line 336, in get_return_value
+flask_app                  |     format(target_id, ".", name))
+flask_app                  | py4j.protocol.Py4JError: An error occurred while calling o32.applySchemaToPythonRDD
+loki                       | level=info ts=2022-04-23T09:00:36.8061573Z caller=table_manager.go:363 msg="creating table" table=index_2592
+loki                       | level=info ts=2022-04-23T09:00:36.8061677Z caller=table_manager.go:363 msg="creating table" table=index_2605
+loki                       | level=info ts=2022-04-23T09:00:36.8061795Z caller=table_manager.go:363 msg="creating table" table=index_2553
+loki                       | level=info ts=2022-04-23T09:00:36.8061895Z caller=table_manager.go:363 msg="creating table" table=index_2566
+loki                       | level=info ts=2022-04-23T09:00:36.80623Z caller=table_manager.go:363 msg="creating table" table=index_2692
+loki                       | level=info ts=2022-04-23T09:00:36.80625Z caller=table_manager.go:363 msg="creating table" table=index_2546
+loki                       | level=info ts=2022-04-23T09:00:36.8062619Z caller=table_manager.go:363 msg="creating table" table=index_2547
+loki                       | level=info ts=2022-04-23T09:00:36.8062738Z caller=table_manager.go:363 msg="creating table" table=index_2609
+loki                       | level=info ts=2022-04-23T09:00:36.8062858Z caller=table_manager.go:363 msg="creating table" table=index_2700
+loki                       | level=info ts=2022-04-23T09:00:36.8062996Z caller=table_manager.go:363 msg="creating table" table=index_2695
+loki                       | level=info ts=2022-04-23T09:00:36.80632Z caller=table_manager.go:363 msg="creating table" table=index_2638
+loki                       | level=info ts=2022-04-23T09:00:36.8063345Z caller=table_manager.go:363 msg="creating table" table=index_2645
+loki                       | level=info ts=2022-04-23T09:00:36.8063508Z caller=table_manager.go:363 msg="creating table" table=index_2523
+loki                       | level=info ts=2022-04-23T09:00:36.8063703Z caller=table_manager.go:363 msg="creating table" table=index_2604
+loki                       | level=info ts=2022-04-23T09:00:36.8064158Z caller=table_manager.go:363 msg="creating table" table=index_2627
+loki                       | level=info ts=2022-04-23T09:00:36.8064335Z caller=table_manager.go:363 msg="creating table" table=index_2719
+loki                       | level=info ts=2022-04-23T09:00:36.8064459Z caller=table_manager.go:363 msg="creating table" table=index_2530
+loki                       | level=info ts=2022-04-23T09:00:36.8065196Z caller=table_manager.go:363 msg="creating table" table=index_2610
+loki                       | level=info ts=2022-04-23T09:00:36.8065365Z caller=table_manager.go:363 msg="creating table" table=index_2574
+loki                       | level=info ts=2022-04-23T09:00:36.8066578Z caller=table_manager.go:363 msg="creating table" table=index_2674
+loki                       | level=info ts=2022-04-23T09:00:36.8066773Z caller=table_manager.go:363 msg="creating table" table=index_2705
+loki                       | level=info ts=2022-04-23T09:00:36.8066916Z caller=table_manager.go:363 msg="creating table" table=index_2622
+loki                       | level=info ts=2022-04-23T09:00:36.8067048Z caller=table_manager.go:363 msg="creating table" table=index_2687
+loki                       | level=info ts=2022-04-23T09:00:36.8067169Z caller=table_manager.go:363 msg="creating table" table=index_2616
+loki                       | level=info ts=2022-04-23T09:00:36.8067597Z caller=table_manager.go:363 msg="creating table" table=index_2660
+loki                       | level=info ts=2022-04-23T09:00:36.8067763Z caller=table_manager.go:363 msg="creating table" table=index_2632
+loki                       | level=info ts=2022-04-23T09:00:36.806789Z caller=table_manager.go:363 msg="creating table" table=index_2639
+loki                       | level=info ts=2022-04-23T09:00:36.8068038Z caller=table_manager.go:363 msg="creating table" table=index_2607
+loki                       | level=info ts=2022-04-23T09:00:36.8069008Z caller=table_manager.go:363 msg="creating table" table=index_2669
+loki                       | level=info ts=2022-04-23T09:00:36.8069224Z caller=table_manager.go:363 msg="creating table" table=index_2550
+loki                       | level=info ts=2022-04-23T09:00:36.8069358Z caller=table_manager.go:363 msg="creating table" table=index_2571
+loki                       | level=info ts=2022-04-23T09:00:36.8069479Z caller=table_manager.go:363 msg="creating table" table=index_2723
+loki                       | level=info ts=2022-04-23T09:00:36.8069657Z caller=table_manager.go:363 msg="creating table" table=index_2628
+loki                       | level=info ts=2022-04-23T09:00:36.807057Z caller=table_manager.go:363 msg="creating table" table=index_2646
+loki                       | level=info ts=2022-04-23T09:00:36.8070808Z caller=table_manager.go:363 msg="creating table" table=index_2602
+loki                       | level=info ts=2022-04-23T09:00:36.807411Z caller=table_manager.go:363 msg="creating table" table=index_2676
+loki                       | level=info ts=2022-04-23T09:00:36.8075374Z caller=table_manager.go:363 msg="creating table" table=index_2678
+loki                       | level=info ts=2022-04-23T09:00:36.8075909Z caller=table_manager.go:363 msg="creating table" table=index_2724
+loki                       | level=info ts=2022-04-23T09:00:36.807642Z caller=table_manager.go:363 msg="creating table" table=index_2538
+loki                       | level=info ts=2022-04-23T09:00:36.8076614Z caller=table_manager.go:363 msg="creating table" table=index_2624
+loki                       | level=info ts=2022-04-23T09:00:36.8077804Z caller=table_manager.go:363 msg="creating table" table=index_2558
+loki                       | level=info ts=2022-04-23T09:00:36.8078036Z caller=table_manager.go:363 msg="creating table" table=index_2569
+loki                       | level=info ts=2022-04-23T09:00:36.8078182Z caller=table_manager.go:363 msg="creating table" table=index_2548
+loki                       | level=info ts=2022-04-23T09:00:36.8079889Z caller=table_manager.go:363 msg="creating table" table=index_2573
+loki                       | level=info ts=2022-04-23T09:00:36.8080098Z caller=table_manager.go:363 msg="creating table" table=index_2707
+loki                       | level=info ts=2022-04-23T09:00:36.8080237Z caller=table_manager.go:363 msg="creating table" table=index_2713
+loki                       | level=info ts=2022-04-23T09:00:36.808036Z caller=table_manager.go:363 msg="creating table" table=index_2729
+loki                       | level=info ts=2022-04-23T09:00:36.8080482Z caller=table_manager.go:363 msg="creating table" table=index_2565
+loki                       | level=info ts=2022-04-23T09:00:36.8080591Z caller=table_manager.go:363 msg="creating table" table=index_2567
+loki                       | level=info ts=2022-04-23T09:00:36.808219Z caller=table_manager.go:363 msg="creating table" table=index_2532
+loki                       | level=info ts=2022-04-23T09:00:36.8082689Z caller=table_manager.go:363 msg="creating table" table=index_2701
+loki                       | level=info ts=2022-04-23T09:00:36.8082878Z caller=table_manager.go:363 msg="creating table" table=index_2606
+loki                       | level=info ts=2022-04-23T09:00:36.8083384Z caller=table_manager.go:363 msg="creating table" table=index_2680
+loki                       | level=info ts=2022-04-23T09:00:36.808358Z caller=table_manager.go:363 msg="creating table" table=index_2524
+loki                       | level=info ts=2022-04-23T09:00:36.8083743Z caller=table_manager.go:363 msg="creating table" table=index_2578
+loki                       | level=info ts=2022-04-23T09:00:36.8084229Z caller=table_manager.go:363 msg="creating table" table=index_2668
+loki                       | level=info ts=2022-04-23T09:00:36.8085858Z caller=table_manager.go:363 msg="creating table" table=index_2722
+loki                       | level=info ts=2022-04-23T09:00:36.8086031Z caller=table_manager.go:363 msg="creating table" table=index_2681
+loki                       | level=info ts=2022-04-23T09:00:36.8086135Z caller=table_manager.go:363 msg="creating table" table=index_2564
+loki                       | level=info ts=2022-04-23T09:00:36.8086226Z caller=table_manager.go:363 msg="creating table" table=index_2648
+loki                       | level=info ts=2022-04-23T09:00:36.8086336Z caller=table_manager.go:363 msg="creating table" table=index_2671
+loki                       | level=info ts=2022-04-23T09:00:36.808643Z caller=table_manager.go:363 msg="creating table" table=index_2710
+loki                       | level=info ts=2022-04-23T09:00:36.8086528Z caller=table_manager.go:363 msg="creating table" table=index_2559
+loki                       | level=info ts=2022-04-23T09:00:36.8086622Z caller=table_manager.go:363 msg="creating table" table=index_2623
+loki                       | level=info ts=2022-04-23T09:00:36.8086731Z caller=table_manager.go:363 msg="creating table" table=index_2629
+loki                       | level=info ts=2022-04-23T09:00:36.8086872Z caller=table_manager.go:363 msg="creating table" table=index_2677
+loki                       | level=info ts=2022-04-23T09:00:36.808697Z caller=table_manager.go:363 msg="creating table" table=index_2696
+loki                       | level=info ts=2022-04-23T09:00:36.8087849Z caller=table_manager.go:363 msg="creating table" table=index_2708
+loki                       | level=info ts=2022-04-23T09:00:36.8089154Z caller=table_manager.go:363 msg="creating table" table=index_2541
+loki                       | level=info ts=2022-04-23T09:00:36.8089676Z caller=table_manager.go:363 msg="creating table" table=index_2600
+loki                       | level=info ts=2022-04-23T09:00:36.8090694Z caller=table_manager.go:363 msg="creating table" table=index_2590
+loki                       | level=info ts=2022-04-23T09:00:36.8091804Z caller=table_manager.go:363 msg="creating table" table=index_2664
+loki                       | level=info ts=2022-04-23T09:00:36.8092028Z caller=table_manager.go:363 msg="creating table" table=index_2535
+loki                       | level=info ts=2022-04-23T09:00:36.8092191Z caller=table_manager.go:363 msg="creating table" table=index_2608
+loki                       | level=info ts=2022-04-23T09:00:36.8092333Z caller=table_manager.go:363 msg="creating table" table=index_2612
+loki                       | level=info ts=2022-04-23T09:00:36.8092471Z caller=table_manager.go:363 msg="creating table" table=index_2656
+loki                       | level=info ts=2022-04-23T09:00:36.8092905Z caller=table_manager.go:363 msg="creating table" table=index_2688
+loki                       | level=info ts=2022-04-23T09:00:36.8093875Z caller=table_manager.go:363 msg="creating table" table=index_2520
+loki                       | level=info ts=2022-04-23T09:00:36.8094108Z caller=table_manager.go:363 msg="creating table" table=index_2542
+loki                       | level=info ts=2022-04-23T09:02:36.7921997Z caller=table_manager.go:220 msg="synching tables" expected_tables=211
+loki                       | level=info ts=2022-04-23T09:02:36.7923882Z caller=table_manager.go:363 msg="creating table" table=index_2631
+loki                       | level=info ts=2022-04-23T09:02:36.7924302Z caller=table_manager.go:363 msg="creating table" table=index_2662
+loki                       | level=info ts=2022-04-23T09:02:36.7924431Z caller=table_manager.go:363 msg="creating table" table=index_2560
+loki                       | level=info ts=2022-04-23T09:02:36.7924504Z caller=table_manager.go:363 msg="creating table" table=index_2618
+loki                       | level=info ts=2022-04-23T09:02:36.7924572Z caller=table_manager.go:363 msg="creating table" table=index_2710
+loki                       | level=info ts=2022-04-23T09:02:36.792466Z caller=table_manager.go:363 msg="creating table" table=index_2525
+loki                       | level=info ts=2022-04-23T09:02:36.7924729Z caller=table_manager.go:363 msg="creating table" table=index_2638
+loki                       | level=info ts=2022-04-23T09:02:36.7924795Z caller=table_manager.go:363 msg="creating table" table=index_2619
+loki                       | level=info ts=2022-04-23T09:02:36.7924862Z caller=table_manager.go:363 msg="creating table" table=index_2655
+loki                       | level=info ts=2022-04-23T09:02:36.7924931Z caller=table_manager.go:363 msg="creating table" table=index_2557
+loki                       | level=info ts=2022-04-23T09:02:36.7924999Z caller=table_manager.go:363 msg="creating table" table=index_2698
+loki                       | level=info ts=2022-04-23T09:02:36.7925071Z caller=table_manager.go:363 msg="creating table" table=index_2729
+loki                       | level=info ts=2022-04-23T09:02:36.7925152Z caller=table_manager.go:363 msg="creating table" table=index_2604
+loki                       | level=info ts=2022-04-23T09:02:36.7925222Z caller=table_manager.go:363 msg="creating table" table=index_2666
+loki                       | level=info ts=2022-04-23T09:02:36.7925545Z caller=table_manager.go:363 msg="creating table" table=index_2616
+loki                       | level=info ts=2022-04-23T09:02:36.7925666Z caller=table_manager.go:363 msg="creating table" table=index_2628
+loki                       | level=info ts=2022-04-23T09:02:36.7925738Z caller=table_manager.go:363 msg="creating table" table=index_2689
+loki                       | level=info ts=2022-04-23T09:02:36.7925845Z caller=table_manager.go:363 msg="creating table" table=index_2591
+loki                       | level=info ts=2022-04-23T09:02:36.7925933Z caller=table_manager.go:363 msg="creating table" table=index_2667
+loki                       | level=info ts=2022-04-23T09:02:36.7926078Z caller=table_manager.go:363 msg="creating table" table=index_2685
+loki                       | level=info ts=2022-04-23T09:02:36.7926216Z caller=table_manager.go:363 msg="creating table" table=index_2704
+loki                       | level=info ts=2022-04-23T09:02:36.792632Z caller=table_manager.go:363 msg="creating table" table=index_2722
+loki                       | level=info ts=2022-04-23T09:02:36.7926441Z caller=table_manager.go:363 msg="creating table" table=index_2552
+loki                       | level=info ts=2022-04-23T09:02:36.7926547Z caller=table_manager.go:363 msg="creating table" table=index_2606
+loki                       | level=info ts=2022-04-23T09:02:36.7926653Z caller=table_manager.go:363 msg="creating table" table=index_2635
+loki                       | level=info ts=2022-04-23T09:02:36.792675Z caller=table_manager.go:363 msg="creating table" table=index_2639
+loki                       | level=info ts=2022-04-23T09:02:36.7927167Z caller=table_manager.go:363 msg="creating table" table=index_2642
+loki                       | level=info ts=2022-04-23T09:02:36.7927395Z caller=table_manager.go:363 msg="creating table" table=index_2542
+loki                       | level=info ts=2022-04-23T09:02:36.7927886Z caller=table_manager.go:363 msg="creating table" table=index_2545
+loki                       | level=info ts=2022-04-23T09:02:36.7928056Z caller=table_manager.go:363 msg="creating table" table=index_2648
+loki                       | level=info ts=2022-04-23T09:02:36.7928535Z caller=table_manager.go:363 msg="creating table" table=index_2541
+loki                       | level=info ts=2022-04-23T09:02:36.7928711Z caller=table_manager.go:363 msg="creating table" table=index_2646
+loki                       | level=info ts=2022-04-23T09:02:36.7928892Z caller=table_manager.go:363 msg="creating table" table=index_2632
+loki                       | level=info ts=2022-04-23T09:02:36.7929371Z caller=table_manager.go:363 msg="creating table" table=index_2696
+loki                       | level=info ts=2022-04-23T09:02:36.7929492Z caller=table_manager.go:363 msg="creating table" table=index_2699
+loki                       | level=info ts=2022-04-23T09:02:36.7929561Z caller=table_manager.go:363 msg="creating table" table=index_2712
+loki                       | level=info ts=2022-04-23T09:02:36.7929638Z caller=table_manager.go:363 msg="creating table" table=index_2535
+loki                       | level=info ts=2022-04-23T09:02:36.792971Z caller=table_manager.go:363 msg="creating table" table=index_2599
+loki                       | level=info ts=2022-04-23T09:02:36.7929779Z caller=table_manager.go:363 msg="creating table" table=index_2668
+loki                       | level=info ts=2022-04-23T09:02:36.7929856Z caller=table_manager.go:363 msg="creating table" table=index_2556
+loki                       | level=info ts=2022-04-23T09:02:36.7929958Z caller=table_manager.go:363 msg="creating table" table=index_2609
+loki                       | level=info ts=2022-04-23T09:02:36.7930029Z caller=table_manager.go:363 msg="creating table" table=index_2640
+loki                       | level=info ts=2022-04-23T09:02:36.7930352Z caller=table_manager.go:363 msg="creating table" table=index_2559
+loki                       | level=info ts=2022-04-23T09:02:36.7930469Z caller=table_manager.go:363 msg="creating table" table=index_2597
+loki                       | level=info ts=2022-04-23T09:02:36.7930565Z caller=table_manager.go:363 msg="creating table" table=index_2569
+loki                       | level=info ts=2022-04-23T09:02:36.7930637Z caller=table_manager.go:363 msg="creating table" table=index_2682
+loki                       | level=info ts=2022-04-23T09:02:36.7930739Z caller=table_manager.go:363 msg="creating table" table=index_2527
+loki                       | level=info ts=2022-04-23T09:02:36.7930814Z caller=table_manager.go:363 msg="creating table" table=index_2549
+loki                       | level=info ts=2022-04-23T09:02:36.7931139Z caller=table_manager.go:363 msg="creating table" table=index_2615
+loki                       | level=info ts=2022-04-23T09:02:36.7931249Z caller=table_manager.go:363 msg="creating table" table=index_2637
+loki                       | level=info ts=2022-04-23T09:02:36.7931318Z caller=table_manager.go:363 msg="creating table" table=index_2663
+loki                       | level=info ts=2022-04-23T09:02:36.7931447Z caller=table_manager.go:363 msg="creating table" table=index_2564
+loki                       | level=info ts=2022-04-23T09:02:36.7931504Z caller=table_manager.go:363 msg="creating table" table=index_2586
+loki                       | level=info ts=2022-04-23T09:02:36.7931561Z caller=table_manager.go:363 msg="creating table" table=index_2636
+loki                       | level=info ts=2022-04-23T09:02:36.7931623Z caller=table_manager.go:363 msg="creating table" table=index_2647
+loki                       | level=info ts=2022-04-23T09:02:36.7931683Z caller=table_manager.go:363 msg="creating table" table=index_2561
+loki                       | level=info ts=2022-04-23T09:02:36.7932029Z caller=table_manager.go:363 msg="creating table" table=index_2582
+loki                       | level=info ts=2022-04-23T09:02:36.7932143Z caller=table_manager.go:363 msg="creating table" table=index_2594
+loki                       | level=info ts=2022-04-23T09:02:36.7936048Z caller=table_manager.go:363 msg="creating table" table=index_2692
+loki                       | level=info ts=2022-04-23T09:02:36.793627Z caller=table_manager.go:363 msg="creating table" table=index_2703
+loki                       | level=info ts=2022-04-23T09:02:36.7936395Z caller=table_manager.go:363 msg="creating table" table=index_2579
+loki                       | level=info ts=2022-04-23T09:02:36.7936517Z caller=table_manager.go:363 msg="creating table" table=index_2583
+loki                       | level=info ts=2022-04-23T09:02:36.7936642Z caller=table_manager.go:363 msg="creating table" table=index_2711
+loki                       | level=info ts=2022-04-23T09:02:36.7936819Z caller=table_manager.go:363 msg="creating table" table=index_2520
+loki                       | level=info ts=2022-04-23T09:02:36.7937291Z caller=table_manager.go:363 msg="creating table" table=index_2623
+loki                       | level=info ts=2022-04-23T09:02:36.7937456Z caller=table_manager.go:363 msg="creating table" table=index_2674
+loki                       | level=info ts=2022-04-23T09:02:36.7937571Z caller=table_manager.go:363 msg="creating table" table=index_2708
+loki                       | level=info ts=2022-04-23T09:02:36.7937682Z caller=table_manager.go:363 msg="creating table" table=index_2683
+loki                       | level=info ts=2022-04-23T09:02:36.7937788Z caller=table_manager.go:363 msg="creating table" table=index_2565
+loki                       | level=info ts=2022-04-23T09:02:36.7937929Z caller=table_manager.go:363 msg="creating table" table=index_2610
+loki                       | level=info ts=2022-04-23T09:02:36.7938096Z caller=table_manager.go:363 msg="creating table" table=index_2531
+loki                       | level=info ts=2022-04-23T09:02:36.7938282Z caller=table_manager.go:363 msg="creating table" table=index_2643
+loki                       | level=info ts=2022-04-23T09:02:36.7938396Z caller=table_manager.go:363 msg="creating table" table=index_2539
+loki                       | level=info ts=2022-04-23T09:02:36.7938497Z caller=table_manager.go:363 msg="creating table" table=index_2627
+loki                       | level=info ts=2022-04-23T09:02:36.7938596Z caller=table_manager.go:363 msg="creating table" table=index_2691
+loki                       | level=info ts=2022-04-23T09:02:36.7938697Z caller=table_manager.go:363 msg="creating table" table=index_2630
+loki                       | level=info ts=2022-04-23T09:02:36.7938795Z caller=table_manager.go:363 msg="creating table" table=index_2665
+loki                       | level=info ts=2022-04-23T09:02:36.7938932Z caller=table_manager.go:363 msg="creating table" table=index_2528
+loki                       | level=info ts=2022-04-23T09:02:36.793933Z caller=table_manager.go:363 msg="creating table" table=index_2574
+loki                       | level=info ts=2022-04-23T09:02:36.7939473Z caller=table_manager.go:363 msg="creating table" table=index_2617
+loki                       | level=info ts=2022-04-23T09:02:36.7939572Z caller=table_manager.go:363 msg="creating table" table=index_2625
+loki                       | level=info ts=2022-04-23T09:02:36.7939666Z caller=table_manager.go:363 msg="creating table" table=index_2600
+loki                       | level=info ts=2022-04-23T09:02:36.7939767Z caller=table_manager.go:363 msg="creating table" table=index_2568
+loki                       | level=info ts=2022-04-23T09:02:36.7939994Z caller=table_manager.go:363 msg="creating table" table=index_2596
+loki                       | level=info ts=2022-04-23T09:02:36.7940124Z caller=table_manager.go:363 msg="creating table" table=index_2719
+loki                       | level=info ts=2022-04-23T09:02:36.794023Z caller=table_manager.go:363 msg="creating table" table=index_2728
+loki                       | level=info ts=2022-04-23T09:02:36.7940337Z caller=table_manager.go:363 msg="creating table" table=index_2620
+loki                       | level=info ts=2022-04-23T09:02:36.7940438Z caller=table_manager.go:363 msg="creating table" table=index_2697
+loki                       | level=info ts=2022-04-23T09:02:36.7940541Z caller=table_manager.go:363 msg="creating table" table=index_2658
+loki                       | level=info ts=2022-04-23T09:02:36.7940647Z caller=table_manager.go:363 msg="creating table" table=index_2536
+loki                       | level=info ts=2022-04-23T09:02:36.7940846Z caller=table_manager.go:363 msg="creating table" table=index_2587
+loki                       | level=info ts=2022-04-23T09:02:36.7940992Z caller=table_manager.go:363 msg="creating table" table=index_2573
+loki                       | level=info ts=2022-04-23T09:02:36.7941098Z caller=table_manager.go:363 msg="creating table" table=index_2654
+loki                       | level=info ts=2022-04-23T09:02:36.79412Z caller=table_manager.go:363 msg="creating table" table=index_2558
+loki                       | level=info ts=2022-04-23T09:02:36.7941301Z caller=table_manager.go:363 msg="creating table" table=index_2684
+loki                       | level=info ts=2022-04-23T09:02:36.7941401Z caller=table_manager.go:363 msg="creating table" table=index_2533
+loki                       | level=info ts=2022-04-23T09:02:36.7941509Z caller=table_manager.go:363 msg="creating table" table=index_2548
+loki                       | level=info ts=2022-04-23T09:02:36.7941717Z caller=table_manager.go:363 msg="creating table" table=index_2651
+loki                       | level=info ts=2022-04-23T09:02:36.7941872Z caller=table_manager.go:363 msg="creating table" table=index_2659
+loki                       | level=info ts=2022-04-23T09:02:36.7941976Z caller=table_manager.go:363 msg="creating table" table=index_2700
+loki                       | level=info ts=2022-04-23T09:02:36.7942078Z caller=table_manager.go:363 msg="creating table" table=index_2701
+loki                       | level=info ts=2022-04-23T09:02:36.7942202Z caller=table_manager.go:363 msg="creating table" table=index_2570
+loki                       | level=info ts=2022-04-23T09:02:36.7942308Z caller=table_manager.go:363 msg="creating table" table=index_2585
+loki                       | level=info ts=2022-04-23T09:02:36.7942414Z caller=table_manager.go:363 msg="creating table" table=index_2563
+loki                       | level=info ts=2022-04-23T09:02:36.7942575Z caller=table_manager.go:363 msg="creating table" table=index_2578
+loki                       | level=info ts=2022-04-23T09:02:36.7942723Z caller=table_manager.go:363 msg="creating table" table=index_2629
+loki                       | level=info ts=2022-04-23T09:02:36.794283Z caller=table_manager.go:363 msg="creating table" table=index_2661
+loki                       | level=info ts=2022-04-23T09:02:36.7942952Z caller=table_manager.go:363 msg="creating table" table=index_2679
+loki                       | level=info ts=2022-04-23T09:02:36.7943059Z caller=table_manager.go:363 msg="creating table" table=index_2695
+loki                       | level=info ts=2022-04-23T09:02:36.7943161Z caller=table_manager.go:363 msg="creating table" table=index_2526
+loki                       | level=info ts=2022-04-23T09:02:36.7943264Z caller=table_manager.go:363 msg="creating table" table=index_2577
+loki                       | level=info ts=2022-04-23T09:02:36.7943371Z caller=table_manager.go:363 msg="creating table" table=index_2720
+loki                       | level=info ts=2022-04-23T09:02:36.7943473Z caller=table_manager.go:363 msg="creating table" table=index_2608
+loki                       | level=info ts=2022-04-23T09:02:36.7943576Z caller=table_manager.go:363 msg="creating table" table=index_2676
+loki                       | level=info ts=2022-04-23T09:02:36.7943677Z caller=table_manager.go:363 msg="creating table" table=index_2680
+loki                       | level=info ts=2022-04-23T09:02:36.7943781Z caller=table_manager.go:363 msg="creating table" table=index_2589
+loki                       | level=info ts=2022-04-23T09:02:36.7943887Z caller=table_manager.go:363 msg="creating table" table=index_2725
+loki                       | level=info ts=2022-04-23T09:02:36.7943988Z caller=table_manager.go:363 msg="creating table" table=index_2621
+loki                       | level=info ts=2022-04-23T09:02:36.7944089Z caller=table_manager.go:363 msg="creating table" table=index_2645
+loki                       | level=info ts=2022-04-23T09:02:36.794419Z caller=table_manager.go:363 msg="creating table" table=index_2543
+loki                       | level=info ts=2022-04-23T09:02:36.7944289Z caller=table_manager.go:363 msg="creating table" table=index_2613
+loki                       | level=info ts=2022-04-23T09:02:36.7944386Z caller=table_manager.go:363 msg="creating table" table=index_2562
+loki                       | level=info ts=2022-04-23T09:02:36.79445Z caller=table_manager.go:363 msg="creating table" table=index_2576
+loki                       | level=info ts=2022-04-23T09:02:36.79446Z caller=table_manager.go:363 msg="creating table" table=index_2538
+loki                       | level=info ts=2022-04-23T09:02:36.79447Z caller=table_manager.go:363 msg="creating table" table=index_2554
+loki                       | level=info ts=2022-04-23T09:02:36.7944799Z caller=table_manager.go:363 msg="creating table" table=index_2716
+loki                       | level=info ts=2022-04-23T09:02:36.7944899Z caller=table_manager.go:363 msg="creating table" table=index_2723
+loki                       | level=info ts=2022-04-23T09:02:36.7945002Z caller=table_manager.go:363 msg="creating table" table=index_2567
+loki                       | level=info ts=2022-04-23T09:02:36.7945105Z caller=table_manager.go:363 msg="creating table" table=index_2581
+loki                       | level=info ts=2022-04-23T09:02:36.7945204Z caller=table_manager.go:363 msg="creating table" table=index_2523
+loki                       | level=info ts=2022-04-23T09:02:36.7945303Z caller=table_manager.go:363 msg="creating table" table=index_2584
+loki                       | level=info ts=2022-04-23T09:02:36.7945404Z caller=table_manager.go:363 msg="creating table" table=index_2705
+loki                       | level=info ts=2022-04-23T09:02:36.7945503Z caller=table_manager.go:363 msg="creating table" table=index_2550
+loki                       | level=info ts=2022-04-23T09:02:36.7945601Z caller=table_manager.go:363 msg="creating table" table=index_2593
+loki                       | level=info ts=2022-04-23T09:02:36.7945701Z caller=table_manager.go:363 msg="creating table" table=index_2572
+loki                       | level=info ts=2022-04-23T09:02:36.7945802Z caller=table_manager.go:363 msg="creating table" table=index_2670
+loki                       | level=info ts=2022-04-23T09:02:36.7945915Z caller=table_manager.go:363 msg="creating table" table=index_2537
+loki                       | level=info ts=2022-04-23T09:02:36.7946013Z caller=table_manager.go:363 msg="creating table" table=index_2566
+loki                       | level=info ts=2022-04-23T09:02:36.7946129Z caller=table_manager.go:363 msg="creating table" table=index_2717
+loki                       | level=info ts=2022-04-23T09:02:36.7946231Z caller=table_manager.go:363 msg="creating table" table=index_2727
+loki                       | level=info ts=2022-04-23T09:02:36.7946331Z caller=table_manager.go:363 msg="creating table" table=index_2521
+loki                       | level=info ts=2022-04-23T09:02:36.7946428Z caller=table_manager.go:363 msg="creating table" table=index_2624
+loki                       | level=info ts=2022-04-23T09:02:36.7946529Z caller=table_manager.go:363 msg="creating table" table=index_2714
+loki                       | level=info ts=2022-04-23T09:02:36.794663Z caller=table_manager.go:363 msg="creating table" table=index_2650
+loki                       | level=info ts=2022-04-23T09:02:36.7946728Z caller=table_manager.go:363 msg="creating table" table=index_2713
+loki                       | level=info ts=2022-04-23T09:02:36.7946827Z caller=table_manager.go:363 msg="creating table" table=index_2649
+loki                       | level=info ts=2022-04-23T09:02:36.7946926Z caller=table_manager.go:363 msg="creating table" table=index_2519
+loki                       | level=info ts=2022-04-23T09:02:36.7947024Z caller=table_manager.go:363 msg="creating table" table=index_2551
+loki                       | level=info ts=2022-04-23T09:02:36.7947122Z caller=table_manager.go:363 msg="creating table" table=index_2592
+loki                       | level=info ts=2022-04-23T09:02:36.7947219Z caller=table_manager.go:363 msg="creating table" table=index_2653
+loki                       | level=info ts=2022-04-23T09:02:36.7947316Z caller=table_manager.go:363 msg="creating table" table=index_2656
+loki                       | level=info ts=2022-04-23T09:02:36.7947414Z caller=table_manager.go:363 msg="creating table" table=index_2660
+loki                       | level=info ts=2022-04-23T09:02:36.7947508Z caller=table_manager.go:363 msg="creating table" table=index_2673
+loki                       | level=info ts=2022-04-23T09:02:36.7947616Z caller=table_manager.go:363 msg="creating table" table=index_2721
+loki                       | level=info ts=2022-04-23T09:02:36.7947716Z caller=table_manager.go:363 msg="creating table" table=index_2522
+loki                       | level=info ts=2022-04-23T09:02:36.7947814Z caller=table_manager.go:363 msg="creating table" table=index_2553
+loki                       | level=info ts=2022-04-23T09:02:36.7947911Z caller=table_manager.go:363 msg="creating table" table=index_2726
+loki                       | level=info ts=2022-04-23T09:02:36.794801Z caller=table_manager.go:363 msg="creating table" table=index_2588
+loki                       | level=info ts=2022-04-23T09:02:36.7948107Z caller=table_manager.go:363 msg="creating table" table=index_2607
+loki                       | level=info ts=2022-04-23T09:02:36.7948205Z caller=table_manager.go:363 msg="creating table" table=index_2657
+loki                       | level=info ts=2022-04-23T09:02:36.7948303Z caller=table_manager.go:363 msg="creating table" table=index_2547
+loki                       | level=info ts=2022-04-23T09:02:36.7948412Z caller=table_manager.go:363 msg="creating table" table=index_2580
+loki                       | level=info ts=2022-04-23T09:02:36.7948505Z caller=table_manager.go:363 msg="creating table" table=index_2641
+loki                       | level=info ts=2022-04-23T09:02:36.7948595Z caller=table_manager.go:363 msg="creating table" table=index_2678
+loki                       | level=info ts=2022-04-23T09:02:36.7948686Z caller=table_manager.go:363 msg="creating table" table=index_2611
+loki                       | level=info ts=2022-04-23T09:02:36.7948785Z caller=table_manager.go:363 msg="creating table" table=index_2634
+loki                       | level=info ts=2022-04-23T09:02:36.7948873Z caller=table_manager.go:363 msg="creating table" table=index_2664
+loki                       | level=info ts=2022-04-23T09:02:36.794918Z caller=table_manager.go:363 msg="creating table" table=index_2677
+loki                       | level=info ts=2022-04-23T09:02:36.794932Z caller=table_manager.go:363 msg="creating table" table=index_2681
+loki                       | level=info ts=2022-04-23T09:02:36.7949413Z caller=table_manager.go:363 msg="creating table" table=index_2686
+loki                       | level=info ts=2022-04-23T09:02:36.7949503Z caller=table_manager.go:363 msg="creating table" table=index_2693
+loki                       | level=info ts=2022-04-23T09:02:36.7949593Z caller=table_manager.go:363 msg="creating table" table=index_2694
+loki                       | level=info ts=2022-04-23T09:02:36.794968Z caller=table_manager.go:363 msg="creating table" table=index_2622
+loki                       | level=info ts=2022-04-23T09:02:36.7949774Z caller=table_manager.go:363 msg="creating table" table=index_2626
+loki                       | level=info ts=2022-04-23T09:02:36.7949864Z caller=table_manager.go:363 msg="creating table" table=index_2707
+loki                       | level=info ts=2022-04-23T09:02:36.7949968Z caller=table_manager.go:363 msg="creating table" table=index_2702
+loki                       | level=info ts=2022-04-23T09:02:36.7950063Z caller=table_manager.go:363 msg="creating table" table=index_2534
+loki                       | level=info ts=2022-04-23T09:02:36.7950154Z caller=table_manager.go:363 msg="creating table" table=index_2546
+loki                       | level=info ts=2022-04-23T09:02:36.7950244Z caller=table_manager.go:363 msg="creating table" table=index_2605
+loki                       | level=info ts=2022-04-23T09:02:36.7950329Z caller=table_manager.go:363 msg="creating table" table=index_2671
+loki                       | level=info ts=2022-04-23T09:02:36.7950418Z caller=table_manager.go:363 msg="creating table" table=index_2571
+loki                       | level=info ts=2022-04-23T09:02:36.7950505Z caller=table_manager.go:363 msg="creating table" table=index_2590
+loki                       | level=info ts=2022-04-23T09:02:36.7950592Z caller=table_manager.go:363 msg="creating table" table=index_2614
+loki                       | level=info ts=2022-04-23T09:02:36.7950679Z caller=table_manager.go:363 msg="creating table" table=index_2718
+loki                       | level=info ts=2022-04-23T09:02:36.7950766Z caller=table_manager.go:363 msg="creating table" table=index_2540
+loki                       | level=info ts=2022-04-23T09:02:36.7950856Z caller=table_manager.go:363 msg="creating table" table=index_2555
+loki                       | level=info ts=2022-04-23T09:02:36.7950945Z caller=table_manager.go:363 msg="creating table" table=index_2575
+loki                       | level=info ts=2022-04-23T09:02:36.7951033Z caller=table_manager.go:363 msg="creating table" table=index_2602
+loki                       | level=info ts=2022-04-23T09:02:36.7951121Z caller=table_manager.go:363 msg="creating table" table=index_2687
+loki                       | level=info ts=2022-04-23T09:02:36.7951207Z caller=table_manager.go:363 msg="creating table" table=index_2524
+loki                       | level=info ts=2022-04-23T09:02:36.7951295Z caller=table_manager.go:363 msg="creating table" table=index_2544
+loki                       | level=info ts=2022-04-23T09:02:36.7951384Z caller=table_manager.go:363 msg="creating table" table=index_2644
+loki                       | level=info ts=2022-04-23T09:02:36.7951489Z caller=table_manager.go:363 msg="creating table" table=index_2672
+loki                       | level=info ts=2022-04-23T09:02:36.7951579Z caller=table_manager.go:363 msg="creating table" table=index_2529
+loki                       | level=info ts=2022-04-23T09:02:36.7951667Z caller=table_manager.go:363 msg="creating table" table=index_2601
+loki                       | level=info ts=2022-04-23T09:02:36.7951765Z caller=table_manager.go:363 msg="creating table" table=index_2675
+loki                       | level=info ts=2022-04-23T09:02:36.7951855Z caller=table_manager.go:363 msg="creating table" table=index_2688
+loki                       | level=info ts=2022-04-23T09:02:36.7951942Z caller=table_manager.go:363 msg="creating table" table=index_2669
+loki                       | level=info ts=2022-04-23T09:02:36.7952031Z caller=table_manager.go:363 msg="creating table" table=index_2715
+loki                       | level=info ts=2022-04-23T09:02:36.795212Z caller=table_manager.go:363 msg="creating table" table=index_2598
+loki                       | level=info ts=2022-04-23T09:02:36.7952219Z caller=table_manager.go:363 msg="creating table" table=index_2633
+loki                       | level=info ts=2022-04-23T09:02:36.7952306Z caller=table_manager.go:363 msg="creating table" table=index_2595
+loki                       | level=info ts=2022-04-23T09:02:36.795239Z caller=table_manager.go:363 msg="creating table" table=index_2612
+loki                       | level=info ts=2022-04-23T09:02:36.7952488Z caller=table_manager.go:363 msg="creating table" table=index_2532
+loki                       | level=info ts=2022-04-23T09:02:36.7952575Z caller=table_manager.go:363 msg="creating table" table=index_2724
+loki                       | level=info ts=2022-04-23T09:02:36.7952661Z caller=table_manager.go:363 msg="creating table" table=index_2652
+loki                       | level=info ts=2022-04-23T09:02:36.7952749Z caller=table_manager.go:363 msg="creating table" table=index_2690
+loki                       | level=info ts=2022-04-23T09:02:36.7952839Z caller=table_manager.go:363 msg="creating table" table=index_2706
+loki                       | level=info ts=2022-04-23T09:02:36.7952925Z caller=table_manager.go:363 msg="creating table" table=index_2709
+loki                       | level=info ts=2022-04-23T09:02:36.7953014Z caller=table_manager.go:363 msg="creating table" table=index_2530
+loki                       | level=info ts=2022-04-23T09:02:36.7953101Z caller=table_manager.go:363 msg="creating table" table=index_2603
+loki                       | level=info ts=2022-04-23T09:04:36.7921265Z caller=table_manager.go:220 msg="synching tables" expected_tables=211
+loki                       | level=info ts=2022-04-23T09:04:36.7923281Z caller=table_manager.go:363 msg="creating table" table=index_2594
+loki                       | level=info ts=2022-04-23T09:04:36.7923716Z caller=table_manager.go:363 msg="creating table" table=index_2679
+loki                       | level=info ts=2022-04-23T09:04:36.7923865Z caller=table_manager.go:363 msg="creating table" table=index_2721
+loki                       | level=info ts=2022-04-23T09:04:36.7923941Z caller=table_manager.go:363 msg="creating table" table=index_2725
+loki                       | level=info ts=2022-04-23T09:04:36.7924017Z caller=table_manager.go:363 msg="creating table" table=index_2553
+loki                       | level=info ts=2022-04-23T09:04:36.7924086Z caller=table_manager.go:363 msg="creating table" table=index_2560
+loki                       | level=info ts=2022-04-23T09:04:36.7924153Z caller=table_manager.go:363 msg="creating table" table=index_2612
+loki                       | level=info ts=2022-04-23T09:04:36.7924219Z caller=table_manager.go:363 msg="creating table" table=index_2697
+loki                       | level=info ts=2022-04-23T09:04:36.7924284Z caller=table_manager.go:363 msg="creating table" table=index_2539
+loki                       | level=info ts=2022-04-23T09:04:36.7924358Z caller=table_manager.go:363 msg="creating table" table=index_2586
+loki                       | level=info ts=2022-04-23T09:04:36.7924429Z caller=table_manager.go:363 msg="creating table" table=index_2649
+loki                       | level=info ts=2022-04-23T09:04:36.7924493Z caller=table_manager.go:363 msg="creating table" table=index_2685
+loki                       | level=info ts=2022-04-23T09:04:36.7924559Z caller=table_manager.go:363 msg="creating table" table=index_2686
+loki                       | level=info ts=2022-04-23T09:04:36.7924627Z caller=table_manager.go:363 msg="creating table" table=index_2521
+loki                       | level=info ts=2022-04-23T09:04:36.7924707Z caller=table_manager.go:363 msg="creating table" table=index_2566
+loki                       | level=info ts=2022-04-23T09:04:36.7924778Z caller=table_manager.go:363 msg="creating table" table=index_2728
+loki                       | level=info ts=2022-04-23T09:04:36.7924883Z caller=table_manager.go:363 msg="creating table" table=index_2642
+loki                       | level=info ts=2022-04-23T09:04:36.7924952Z caller=table_manager.go:363 msg="creating table" table=index_2726
+loki                       | level=info ts=2022-04-23T09:04:36.7925022Z caller=table_manager.go:363 msg="creating table" table=index_2533
+loki                       | level=info ts=2022-04-23T09:04:36.7925351Z caller=table_manager.go:363 msg="creating table" table=index_2713
+loki                       | level=info ts=2022-04-23T09:04:36.7925467Z caller=table_manager.go:363 msg="creating table" table=index_2718
+loki                       | level=info ts=2022-04-23T09:04:36.7925797Z caller=table_manager.go:363 msg="creating table" table=index_2534
+loki                       | level=info ts=2022-04-23T09:04:36.7925908Z caller=table_manager.go:363 msg="creating table" table=index_2655
+loki                       | level=info ts=2022-04-23T09:04:36.7925981Z caller=table_manager.go:363 msg="creating table" table=index_2604
+loki                       | level=info ts=2022-04-23T09:04:36.7926048Z caller=table_manager.go:363 msg="creating table" table=index_2660
+loki                       | level=info ts=2022-04-23T09:04:36.7926116Z caller=table_manager.go:363 msg="creating table" table=index_2680
+loki                       | level=info ts=2022-04-23T09:04:36.7926182Z caller=table_manager.go:363 msg="creating table" table=index_2524
+loki                       | level=info ts=2022-04-23T09:04:36.7926397Z caller=table_manager.go:363 msg="creating table" table=index_2569
+loki                       | level=info ts=2022-04-23T09:04:36.7926557Z caller=table_manager.go:363 msg="creating table" table=index_2522
+loki                       | level=info ts=2022-04-23T09:04:36.7926678Z caller=table_manager.go:363 msg="creating table" table=index_2546
+loki                       | level=info ts=2022-04-23T09:04:36.7926788Z caller=table_manager.go:363 msg="creating table" table=index_2530
+loki                       | level=info ts=2022-04-23T09:04:36.7926979Z caller=table_manager.go:363 msg="creating table" table=index_2716
+loki                       | level=info ts=2022-04-23T09:04:36.7927111Z caller=table_manager.go:363 msg="creating table" table=index_2656
+loki                       | level=info ts=2022-04-23T09:04:36.7927187Z caller=table_manager.go:363 msg="creating table" table=index_2683
+loki                       | level=info ts=2022-04-23T09:04:36.7927257Z caller=table_manager.go:363 msg="creating table" table=index_2688
+loki                       | level=info ts=2022-04-23T09:04:36.7927319Z caller=table_manager.go:363 msg="creating table" table=index_2609
+loki                       | level=info ts=2022-04-23T09:04:36.7927379Z caller=table_manager.go:363 msg="creating table" table=index_2640
+loki                       | level=info ts=2022-04-23T09:04:36.7927439Z caller=table_manager.go:363 msg="creating table" table=index_2623
+loki                       | level=info ts=2022-04-23T09:04:36.792754Z caller=table_manager.go:363 msg="creating table" table=index_2646
+loki                       | level=info ts=2022-04-23T09:04:36.7927702Z caller=table_manager.go:363 msg="creating table" table=index_2617
+loki                       | level=info ts=2022-04-23T09:04:36.7928125Z caller=table_manager.go:363 msg="creating table" table=index_2705
+loki                       | level=info ts=2022-04-23T09:04:36.792826Z caller=table_manager.go:363 msg="creating table" table=index_2596
+loki                       | level=info ts=2022-04-23T09:04:36.7928322Z caller=table_manager.go:363 msg="creating table" table=index_2610
+loki                       | level=info ts=2022-04-23T09:04:36.7928379Z caller=table_manager.go:363 msg="creating table" table=index_2622
+loki                       | level=info ts=2022-04-23T09:04:36.7928437Z caller=table_manager.go:363 msg="creating table" table=index_2627
+loki                       | level=info ts=2022-04-23T09:04:36.7928498Z caller=table_manager.go:363 msg="creating table" table=index_2632
+loki                       | level=info ts=2022-04-23T09:04:36.7928572Z caller=table_manager.go:363 msg="creating table" table=index_2724
+loki                       | level=info ts=2022-04-23T09:04:36.792868Z caller=table_manager.go:363 msg="creating table" table=index_2557
+loki                       | level=info ts=2022-04-23T09:04:36.7928786Z caller=table_manager.go:363 msg="creating table" table=index_2605
+loki                       | level=info ts=2022-04-23T09:04:36.792898Z caller=table_manager.go:363 msg="creating table" table=index_2652
+loki                       | level=info ts=2022-04-23T09:04:36.792909Z caller=table_manager.go:363 msg="creating table" table=index_2577
+loki                       | level=info ts=2022-04-23T09:04:36.7929151Z caller=table_manager.go:363 msg="creating table" table=index_2599
+loki                       | level=info ts=2022-04-23T09:04:36.7929208Z caller=table_manager.go:363 msg="creating table" table=index_2654
+loki                       | level=info ts=2022-04-23T09:04:36.7929265Z caller=table_manager.go:363 msg="creating table" table=index_2663
+loki                       | level=info ts=2022-04-23T09:04:36.7929323Z caller=table_manager.go:363 msg="creating table" table=index_2709
+loki                       | level=info ts=2022-04-23T09:04:36.7929384Z caller=table_manager.go:363 msg="creating table" table=index_2535
+loki                       | level=info ts=2022-04-23T09:04:36.7929444Z caller=table_manager.go:363 msg="creating table" table=index_2570
+loki                       | level=info ts=2022-04-23T09:04:36.7929557Z caller=table_manager.go:363 msg="creating table" table=index_2729
+loki                       | level=info ts=2022-04-23T09:04:36.7929669Z caller=table_manager.go:363 msg="creating table" table=index_2559
+loki                       | level=info ts=2022-04-23T09:04:36.7930071Z caller=table_manager.go:363 msg="creating table" table=index_2682
+loki                       | level=info ts=2022-04-23T09:04:36.7930573Z caller=table_manager.go:363 msg="creating table" table=index_2638
+loki                       | level=info ts=2022-04-23T09:04:36.793079Z caller=table_manager.go:363 msg="creating table" table=index_2672
+loki                       | level=info ts=2022-04-23T09:04:36.7930912Z caller=table_manager.go:363 msg="creating table" table=index_2615
+loki                       | level=info ts=2022-04-23T09:04:36.793102Z caller=table_manager.go:363 msg="creating table" table=index_2606
+loki                       | level=info ts=2022-04-23T09:04:36.7931123Z caller=table_manager.go:363 msg="creating table" table=index_2608
+loki                       | level=info ts=2022-04-23T09:04:36.7931238Z caller=table_manager.go:363 msg="creating table" table=index_2645
+loki                       | level=info ts=2022-04-23T09:04:36.793142Z caller=table_manager.go:363 msg="creating table" table=index_2592
+loki                       | level=info ts=2022-04-23T09:04:36.7931942Z caller=table_manager.go:363 msg="creating table" table=index_2635
+loki                       | level=info ts=2022-04-23T09:04:36.7932106Z caller=table_manager.go:363 msg="creating table" table=index_2631
+loki                       | level=info ts=2022-04-23T09:04:36.7932713Z caller=table_manager.go:363 msg="creating table" table=index_2573
+loki                       | level=info ts=2022-04-23T09:04:36.7932882Z caller=table_manager.go:363 msg="creating table" table=index_2625
+loki                       | level=info ts=2022-04-23T09:04:36.7933309Z caller=table_manager.go:363 msg="creating table" table=index_2694
+loki                       | level=info ts=2022-04-23T09:04:36.7933475Z caller=table_manager.go:363 msg="creating table" table=index_2519
+loki                       | level=info ts=2022-04-23T09:04:36.7933726Z caller=table_manager.go:363 msg="creating table" table=index_2650
+loki                       | level=info ts=2022-04-23T09:04:36.7933869Z caller=table_manager.go:363 msg="creating table" table=index_2587
+loki                       | level=info ts=2022-04-23T09:04:36.7933978Z caller=table_manager.go:363 msg="creating table" table=index_2543
+loki                       | level=info ts=2022-04-23T09:04:36.7934134Z caller=table_manager.go:363 msg="creating table" table=index_2552
+loki                       | level=info ts=2022-04-23T09:04:36.7934311Z caller=table_manager.go:363 msg="creating table" table=index_2576
+loki                       | level=info ts=2022-04-23T09:04:36.7934429Z caller=table_manager.go:363 msg="creating table" table=index_2603
+loki                       | level=info ts=2022-04-23T09:04:36.7934916Z caller=table_manager.go:363 msg="creating table" table=index_2538
+loki                       | level=info ts=2022-04-23T09:04:36.7935118Z caller=table_manager.go:363 msg="creating table" table=index_2628
+loki                       | level=info ts=2022-04-23T09:04:36.7935305Z caller=table_manager.go:363 msg="creating table" table=index_2634
+loki                       | level=info ts=2022-04-23T09:04:36.7935431Z caller=table_manager.go:363 msg="creating table" table=index_2602
+loki                       | level=info ts=2022-04-23T09:04:36.793561Z caller=table_manager.go:363 msg="creating table" table=index_2661
+loki                       | level=info ts=2022-04-23T09:04:36.7935797Z caller=table_manager.go:363 msg="creating table" table=index_2616
+loki                       | level=info ts=2022-04-23T09:04:36.7935961Z caller=table_manager.go:363 msg="creating table" table=index_2708
+loki                       | level=info ts=2022-04-23T09:04:36.7936202Z caller=table_manager.go:363 msg="creating table" table=index_2620
+loki                       | level=info ts=2022-04-23T09:04:36.7936567Z caller=table_manager.go:363 msg="creating table" table=index_2636
+loki                       | level=info ts=2022-04-23T09:04:36.7937023Z caller=table_manager.go:363 msg="creating table" table=index_2658
+loki                       | level=info ts=2022-04-23T09:04:36.793719Z caller=table_manager.go:363 msg="creating table" table=index_2693
+loki                       | level=info ts=2022-04-23T09:04:36.7937316Z caller=table_manager.go:363 msg="creating table" table=index_2695
+loki                       | level=info ts=2022-04-23T09:04:36.7938044Z caller=table_manager.go:363 msg="creating table" table=index_2700
+loki                       | level=info ts=2022-04-23T09:04:36.793854Z caller=table_manager.go:363 msg="creating table" table=index_2554
+loki                       | level=info ts=2022-04-23T09:04:36.7938713Z caller=table_manager.go:363 msg="creating table" table=index_2601
+loki                       | level=info ts=2022-04-23T09:04:36.7938902Z caller=table_manager.go:363 msg="creating table" table=index_2556
+loki                       | level=info ts=2022-04-23T09:04:36.7939025Z caller=table_manager.go:363 msg="creating table" table=index_2644
+loki                       | level=info ts=2022-04-23T09:04:36.7939137Z caller=table_manager.go:363 msg="creating table" table=index_2703
+loki                       | level=info ts=2022-04-23T09:04:36.7939307Z caller=table_manager.go:363 msg="creating table" table=index_2714
+loki                       | level=info ts=2022-04-23T09:04:36.7939439Z caller=table_manager.go:363 msg="creating table" table=index_2532
+loki                       | level=info ts=2022-04-23T09:04:36.7939563Z caller=table_manager.go:363 msg="creating table" table=index_2547
+loki                       | level=info ts=2022-04-23T09:04:36.7939696Z caller=table_manager.go:363 msg="creating table" table=index_2657
+loki                       | level=info ts=2022-04-23T09:04:36.7940237Z caller=table_manager.go:363 msg="creating table" table=index_2698
+loki                       | level=info ts=2022-04-23T09:04:36.79404Z caller=table_manager.go:363 msg="creating table" table=index_2600
+loki                       | level=info ts=2022-04-23T09:04:36.7940544Z caller=table_manager.go:363 msg="creating table" table=index_2676
+loki                       | level=info ts=2022-04-23T09:04:36.794073Z caller=table_manager.go:363 msg="creating table" table=index_2555
+loki                       | level=info ts=2022-04-23T09:04:36.7940886Z caller=table_manager.go:363 msg="creating table" table=index_2574
+loki                       | level=info ts=2022-04-23T09:04:36.7941011Z caller=table_manager.go:363 msg="creating table" table=index_2550
+loki                       | level=info ts=2022-04-23T09:04:36.7941197Z caller=table_manager.go:363 msg="creating table" table=index_2701
+loki                       | level=info ts=2022-04-23T09:04:36.7941329Z caller=table_manager.go:363 msg="creating table" table=index_2629
+loki                       | level=info ts=2022-04-23T09:04:36.7941491Z caller=table_manager.go:363 msg="creating table" table=index_2711
+loki                       | level=info ts=2022-04-23T09:04:36.7941633Z caller=table_manager.go:363 msg="creating table" table=index_2529
+loki                       | level=info ts=2022-04-23T09:04:36.7941764Z caller=table_manager.go:363 msg="creating table" table=index_2536
+loki                       | level=info ts=2022-04-23T09:04:36.7941881Z caller=table_manager.go:363 msg="creating table" table=index_2665
+loki                       | level=info ts=2022-04-23T09:04:36.7941988Z caller=table_manager.go:363 msg="creating table" table=index_2668
+loki                       | level=info ts=2022-04-23T09:04:36.7942111Z caller=table_manager.go:363 msg="creating table" table=index_2710
+loki                       | level=info ts=2022-04-23T09:04:36.7942309Z caller=table_manager.go:363 msg="creating table" table=index_2568
+loki                       | level=info ts=2022-04-23T09:04:36.794244Z caller=table_manager.go:363 msg="creating table" table=index_2621
+loki                       | level=info ts=2022-04-23T09:04:36.7942956Z caller=table_manager.go:363 msg="creating table" table=index_2630
+loki                       | level=info ts=2022-04-23T09:04:36.7943501Z caller=table_manager.go:363 msg="creating table" table=index_2707
+loki                       | level=info ts=2022-04-23T09:04:36.7943673Z caller=table_manager.go:363 msg="creating table" table=index_2526
+loki                       | level=info ts=2022-04-23T09:04:36.7943777Z caller=table_manager.go:363 msg="creating table" table=index_2579
+loki                       | level=info ts=2022-04-23T09:04:36.7943975Z caller=table_manager.go:363 msg="creating table" table=index_2613
+loki                       | level=info ts=2022-04-23T09:04:36.7944157Z caller=table_manager.go:363 msg="creating table" table=index_2537
+loki                       | level=info ts=2022-04-23T09:04:36.7944328Z caller=table_manager.go:363 msg="creating table" table=index_2585
+loki                       | level=info ts=2022-04-23T09:04:36.7944844Z caller=table_manager.go:363 msg="creating table" table=index_2580
+loki                       | level=info ts=2022-04-23T09:04:36.7945108Z caller=table_manager.go:363 msg="creating table" table=index_2589
+loki                       | level=info ts=2022-04-23T09:04:36.7945271Z caller=table_manager.go:363 msg="creating table" table=index_2633
+loki                       | level=info ts=2022-04-23T09:04:36.7945728Z caller=table_manager.go:363 msg="creating table" table=index_2647
+loki                       | level=info ts=2022-04-23T09:04:36.7946441Z caller=table_manager.go:363 msg="creating table" table=index_2564
+loki                       | level=info ts=2022-04-23T09:04:36.7946657Z caller=table_manager.go:363 msg="creating table" table=index_2584
+loki                       | level=info ts=2022-04-23T09:04:36.7946796Z caller=table_manager.go:363 msg="creating table" table=index_2607
+loki                       | level=info ts=2022-04-23T09:04:36.7946977Z caller=table_manager.go:363 msg="creating table" table=index_2662
+loki                       | level=info ts=2022-04-23T09:04:36.7947175Z caller=table_manager.go:363 msg="creating table" table=index_2677
+loki                       | level=info ts=2022-04-23T09:04:36.7947518Z caller=table_manager.go:363 msg="creating table" table=index_2719
+loki                       | level=info ts=2022-04-23T09:04:36.7948079Z caller=table_manager.go:363 msg="creating table" table=index_2549
+loki                       | level=info ts=2022-04-23T09:04:36.7948249Z caller=table_manager.go:363 msg="creating table" table=index_2563
+loki                       | level=info ts=2022-04-23T09:04:36.794837Z caller=table_manager.go:363 msg="creating table" table=index_2689
+loki                       | level=info ts=2022-04-23T09:04:36.7948543Z caller=table_manager.go:363 msg="creating table" table=index_2717
+loki                       | level=info ts=2022-04-23T09:04:36.7948695Z caller=table_manager.go:363 msg="creating table" table=index_2720
+loki                       | level=info ts=2022-04-23T09:04:36.7948871Z caller=table_manager.go:363 msg="creating table" table=index_2575
+loki                       | level=info ts=2022-04-23T09:04:36.7948997Z caller=table_manager.go:363 msg="creating table" table=index_2648
+loki                       | level=info ts=2022-04-23T09:04:36.7949415Z caller=table_manager.go:363 msg="creating table" table=index_2590
+loki                       | level=info ts=2022-04-23T09:04:36.7949659Z caller=table_manager.go:363 msg="creating table" table=index_2643
+loki                       | level=info ts=2022-04-23T09:04:36.7949803Z caller=table_manager.go:363 msg="creating table" table=index_2671
+loki                       | level=info ts=2022-04-23T09:04:36.7949975Z caller=table_manager.go:363 msg="creating table" table=index_2572
+loki                       | level=info ts=2022-04-23T09:04:36.7950097Z caller=table_manager.go:363 msg="creating table" table=index_2578
+loki                       | level=info ts=2022-04-23T09:04:36.795026Z caller=table_manager.go:363 msg="creating table" table=index_2583
+loki                       | level=info ts=2022-04-23T09:04:36.7950423Z caller=table_manager.go:363 msg="creating table" table=index_2699
+loki                       | level=info ts=2022-04-23T09:04:36.7950572Z caller=table_manager.go:363 msg="creating table" table=index_2727
+loki                       | level=info ts=2022-04-23T09:04:36.7950742Z caller=table_manager.go:363 msg="creating table" table=index_2545
+loki                       | level=info ts=2022-04-23T09:04:36.7950882Z caller=table_manager.go:363 msg="creating table" table=index_2562
+loki                       | level=info ts=2022-04-23T09:04:36.7951358Z caller=table_manager.go:363 msg="creating table" table=index_2667
+loki                       | level=info ts=2022-04-23T09:04:36.7951586Z caller=table_manager.go:363 msg="creating table" table=index_2669
+loki                       | level=info ts=2022-04-23T09:04:36.7951731Z caller=table_manager.go:363 msg="creating table" table=index_2588
+loki                       | level=info ts=2022-04-23T09:04:36.795189Z caller=table_manager.go:363 msg="creating table" table=index_2614
+loki                       | level=info ts=2022-04-23T09:04:36.7952037Z caller=table_manager.go:363 msg="creating table" table=index_2565
+loki                       | level=info ts=2022-04-23T09:04:36.7952155Z caller=table_manager.go:363 msg="creating table" table=index_2593
+loki                       | level=info ts=2022-04-23T09:04:36.7952326Z caller=table_manager.go:363 msg="creating table" table=index_2597
+loki                       | level=info ts=2022-04-23T09:04:36.7953131Z caller=table_manager.go:363 msg="creating table" table=index_2598
+loki                       | level=info ts=2022-04-23T09:04:36.7953335Z caller=table_manager.go:363 msg="creating table" table=index_2619
+loki                       | level=info ts=2022-04-23T09:04:36.7953698Z caller=table_manager.go:363 msg="creating table" table=index_2639
+loki                       | level=info ts=2022-04-23T09:04:36.7953843Z caller=table_manager.go:363 msg="creating table" table=index_2541
+loki                       | level=info ts=2022-04-23T09:04:36.7953926Z caller=table_manager.go:363 msg="creating table" table=index_2561
+loki                       | level=info ts=2022-04-23T09:04:36.7954007Z caller=table_manager.go:363 msg="creating table" table=index_2666
+loki                       | level=info ts=2022-04-23T09:04:36.7954101Z caller=table_manager.go:363 msg="creating table" table=index_2706
+loki                       | level=info ts=2022-04-23T09:04:36.7954206Z caller=table_manager.go:363 msg="creating table" table=index_2704
+loki                       | level=info ts=2022-04-23T09:04:36.7954357Z caller=table_manager.go:363 msg="creating table" table=index_2540
+loki                       | level=info ts=2022-04-23T09:04:36.7954474Z caller=table_manager.go:363 msg="creating table" table=index_2687
+loki                       | level=info ts=2022-04-23T09:04:36.7954625Z caller=table_manager.go:363 msg="creating table" table=index_2673
+loki                       | level=info ts=2022-04-23T09:04:36.7955144Z caller=table_manager.go:363 msg="creating table" table=index_2684
+loki                       | level=info ts=2022-04-23T09:04:36.7955304Z caller=table_manager.go:363 msg="creating table" table=index_2664
+loki                       | level=info ts=2022-04-23T09:04:36.7955471Z caller=table_manager.go:363 msg="creating table" table=index_2611
+loki                       | level=info ts=2022-04-23T09:04:36.7955654Z caller=table_manager.go:363 msg="creating table" table=index_2651
+loki                       | level=info ts=2022-04-23T09:04:36.7956169Z caller=table_manager.go:363 msg="creating table" table=index_2674
+loki                       | level=info ts=2022-04-23T09:04:36.7956344Z caller=table_manager.go:363 msg="creating table" table=index_2531
+loki                       | level=info ts=2022-04-23T09:04:36.7956844Z caller=table_manager.go:363 msg="creating table" table=index_2548
+loki                       | level=info ts=2022-04-23T09:04:36.7957228Z caller=table_manager.go:363 msg="creating table" table=index_2618
+loki                       | level=info ts=2022-04-23T09:04:36.7957393Z caller=table_manager.go:363 msg="creating table" table=index_2678
+loki                       | level=info ts=2022-04-23T09:04:36.7957562Z caller=table_manager.go:363 msg="creating table" table=index_2523
+loki                       | level=info ts=2022-04-23T09:04:36.7957729Z caller=table_manager.go:363 msg="creating table" table=index_2591
+loki                       | level=info ts=2022-04-23T09:04:36.7957846Z caller=table_manager.go:363 msg="creating table" table=index_2659
+loki                       | level=info ts=2022-04-23T09:04:36.795833Z caller=table_manager.go:363 msg="creating table" table=index_2691
+loki                       | level=info ts=2022-04-23T09:04:36.7958499Z caller=table_manager.go:363 msg="creating table" table=index_2567
+loki                       | level=info ts=2022-04-23T09:04:36.7959337Z caller=table_manager.go:363 msg="creating table" table=index_2581
+loki                       | level=info ts=2022-04-23T09:04:36.795955Z caller=table_manager.go:363 msg="creating table" table=index_2637
+loki                       | level=info ts=2022-04-23T09:04:36.7959683Z caller=table_manager.go:363 msg="creating table" table=index_2571
+loki                       | level=info ts=2022-04-23T09:04:36.7960126Z caller=table_manager.go:363 msg="creating table" table=index_2626
+loki                       | level=info ts=2022-04-23T09:04:36.7960296Z caller=table_manager.go:363 msg="creating table" table=index_2653
+loki                       | level=info ts=2022-04-23T09:04:36.7960502Z caller=table_manager.go:363 msg="creating table" table=index_2692
+loki                       | level=info ts=2022-04-23T09:04:36.7960678Z caller=table_manager.go:363 msg="creating table" table=index_2696
+loki                       | level=info ts=2022-04-23T09:04:36.7960811Z caller=table_manager.go:363 msg="creating table" table=index_2558
+loki                       | level=info ts=2022-04-23T09:04:36.7961271Z caller=table_manager.go:363 msg="creating table" table=index_2595
+loki                       | level=info ts=2022-04-23T09:04:36.7961438Z caller=table_manager.go:363 msg="creating table" table=index_2542
+loki                       | level=info ts=2022-04-23T09:04:36.7961904Z caller=table_manager.go:363 msg="creating table" table=index_2690
+loki                       | level=info ts=2022-04-23T09:04:36.7962067Z caller=table_manager.go:363 msg="creating table" table=index_2670
+loki                       | level=info ts=2022-04-23T09:04:36.796221Z caller=table_manager.go:363 msg="creating table" table=index_2675
+loki                       | level=info ts=2022-04-23T09:04:36.7962393Z caller=table_manager.go:363 msg="creating table" table=index_2551
+loki                       | level=info ts=2022-04-23T09:04:36.7962606Z caller=table_manager.go:363 msg="creating table" table=index_2624
+loki                       | level=info ts=2022-04-23T09:04:36.7962725Z caller=table_manager.go:363 msg="creating table" table=index_2681
+loki                       | level=info ts=2022-04-23T09:04:36.7962868Z caller=table_manager.go:363 msg="creating table" table=index_2702
+loki                       | level=info ts=2022-04-23T09:04:36.7962984Z caller=table_manager.go:363 msg="creating table" table=index_2520
+loki                       | level=info ts=2022-04-23T09:04:36.7963128Z caller=table_manager.go:363 msg="creating table" table=index_2527
+loki                       | level=info ts=2022-04-23T09:04:36.7963333Z caller=table_manager.go:363 msg="creating table" table=index_2722
+loki                       | level=info ts=2022-04-23T09:04:36.796347Z caller=table_manager.go:363 msg="creating table" table=index_2528
+loki                       | level=info ts=2022-04-23T09:04:36.7963621Z caller=table_manager.go:363 msg="creating table" table=index_2582
+loki                       | level=info ts=2022-04-23T09:04:36.7964205Z caller=table_manager.go:363 msg="creating table" table=index_2641
+loki                       | level=info ts=2022-04-23T09:04:36.7964378Z caller=table_manager.go:363 msg="creating table" table=index_2712
+loki                       | level=info ts=2022-04-23T09:04:36.7964515Z caller=table_manager.go:363 msg="creating table" table=index_2715
+loki                       | level=info ts=2022-04-23T09:04:36.7964658Z caller=table_manager.go:363 msg="creating table" table=index_2723
+loki                       | level=info ts=2022-04-23T09:04:36.7964787Z caller=table_manager.go:363 msg="creating table" table=index_2525
+loki                       | level=info ts=2022-04-23T09:04:36.7964987Z caller=table_manager.go:363 msg="creating table" table=index_2544

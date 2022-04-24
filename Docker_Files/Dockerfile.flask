@@ -1,11 +1,17 @@
-From python:3.7-alpine3.14
-
+FROM openjdk:8u322-slim-buster
+# FROM bitnami/spark:3-debian-10
+COPY --from=python:3.8.13-slim-buster / /
+# USER root
 WORKDIR /taxi_trips
-COPY . /taxi_trips
-
-RUN python setup.py install
+COPY /src/ /taxi_trips/src/
+COPY requirements.txt /taxi_trips/requirements.txt
+COPY setup.py /taxi_trips/setup.py
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN mv /taxi_trips/tests/  /taxi_trips/src/flask_app/tests/
-RUN mv /taxi_trips/conf/  /taxi_trips/src/flask_app/conf/
-WORKDIR /taxi_trips/src/flask_app
-
+COPY /tests/ /taxi_trips/tests/
+# RUN mv /taxi_trips/tests/  /taxi_trips/src/flask_app/tests/
+COPY /conf/ /taxi_trips/src/flask_app/conf/
+COPY /trained_models/ /taxi_trips/src/flask_app/trained_models/
+# RUN mv /taxi_trips/conf/  /taxi_trips/src/flask_app/conf/
+# RUN mv /taxi_trips/trained_models/  /taxi_trips/src/flask_app/trained_models/
+# WORKDIR /taxi_trips/src/flask_app
