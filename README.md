@@ -1,71 +1,117 @@
-taxi_trips
-==============================
+# Taxi Trips Fare Prediction
 
-This helps to predict the nyc taxi fare amount
+Flask + PySpark project for predicting NYC taxi fare from trip details, with Docker-based deployment and optional MLflow tracking.
 
-Project Organization
-------------
+## What this project includes
 
-    ├── LICENSE
-    ├── README.md               <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external            <- Data from third party sources.
-    │   ├── interim             <- Intermediate data that has been transformed.
-    │   ├── processed           <- The final, canonical data sets for modeling.
-    │   └── raw                 <- The original, immutable data dump.
-    │
-    ├── docs                    <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models                  <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks               <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                              the creator's initials, and a short `-` delimited description, e.g.
-    │                              `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references              <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures             <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt        <- The requirements file for reproducing the analysis environment, e.g.
-    │                              generated with `pip freeze > requirements.txt`
-    │
-    ├── Dockerfile.flask        <- Dockerfile for flask container
-    │
-    ├── Dockerfile.ngnix        <- Dockerfile for ngnix container
-    │
-    ├── docker-compose.yaml     <- Creates Docker container
-    │
-    ├── run_docker.sh           <- Remove old docker container and create new container
-    │
-    ├── setup.py                <- makes project pip installable (pip install -e .) so src can be imported
-    │
-    ├── test                     <- Scripts for testing
-    │   ├── __init__.py          <- Makes src a Python module
-    |   ├──
-    |
-    ├── src                     <- Source code for use in this project.
-    │   ├── __init__.py         <- Makes src a Python module
-    |   |
-    │   ├── flask_app           <- Scripts to run flask application
-    │   │   ├── templates       <- contains html pages
-    │   │   │     └── index.html
-    |   |   ├── app.py
-    |   |   ├── wsgi.py
-    │   │   └── ngnix           <- contains ngnix config files
-    │   │        ├── nginx.conf
-    │   │        └── project.conf
-    │   ├── models              <- Scripts to train models and then use trained models to make
-    │   │   │                      predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization       <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini                 <- tox file with settings for running tox; see tox.readthedocs.io
+- Fare prediction web UI built with Flask (`src/flask_app`)
+- PySpark model training and inference code (`src/models`)
+- Docker Compose stack with Spark master/worker + Flask + Nginx (`docker-compose.yml`)
+- Monitoring configs (Loki / Prometheus / Grafana) under `monitoring/`
+- Basic tests with `pytest`
 
+## Repository Structure
 
---------
+```text
+.
+├── conf/                    # Data and location configuration JSON files
+├── Docker_Files/            # Dockerfiles for Flask, Spark, and Nginx services
+├── docs/                    # Sphinx docs scaffold
+├── monitoring/              # Monitoring configs and dashboards
+├── notebooks/               # Exploration notebooks
+├── src/
+│   ├── flask_app/           # Flask app, templates, static files
+│   ├── models/              # Training, preprocessing, inference, pipeline scripts
+│   └── ngnix/               # Nginx config files used by container
+├── tests/                   # Pytest suite
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+```
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+## Prerequisites
+
+- Python 3.8+
+- `pip`
+- Docker + Docker Compose (for containerized run)
+
+## Local Setup
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Run the App (Docker)
+
+Recommended path for full stack execution:
+
+```bash
+bash run_docker.sh
+```
+
+What it does:
+
+- Installs Loki Docker logging plugin
+- Stops old containers/volumes
+- Rebuilds images with no cache
+- Starts containers in detached mode
+- Runs tests inside `flask_app` container
+
+After startup:
+
+- App is exposed via Nginx on `http://localhost:80`
+- Spark master UI is available on `http://localhost:8080`
+- Spark worker UI is available on `http://localhost:8081`
+
+## Run Model Pipeline + MLflow (local script)
+
+`start.sh` executes the model pipeline and then starts MLflow server.
+
+Required environment variables:
+
+- `DB_URI` (MLflow backend store URI)
+- `MLFLOW_ARTIFACT_ROOT` (artifact storage location)
+
+Example:
+
+```bash
+export DB_URI=sqlite:///mlflow.db
+export MLFLOW_ARTIFACT_ROOT=./artifacts
+bash start.sh
+```
+
+## Run MLflow UI only
+
+```bash
+export DB_URI=sqlite:///mlflow.db
+export MLFLOW_ARTIFACT_ROOT=./artifacts
+bash start_ui.sh
+```
+
+## Testing
+
+Run tests locally:
+
+```bash
+pytest -q
+```
+
+Run tests in containers (already included in `run_docker.sh`):
+
+```bash
+docker-compose exec flask_app pytest tests
+```
+
+## Main Code Paths
+
+- Flask entrypoint: `src/flask_app/app.py`
+- Prediction logic: `src/models/predict.py`
+- Training logic: `src/models/train_model.py`
+- End-to-end pipeline: `src/models/pipeline.py`
+
+## Notes
+
+- Some paths in Flask/inference code are absolute container-style paths (for example `/taxi_trips/...`), so Docker is the most reliable way to run the app as-is.
+- Model artifacts are mounted into the Spark worker container from `trained_models/`.
